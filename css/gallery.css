@@ -1,0 +1,627 @@
+/* ================= BOOKSTORE GALLERY PAGE ================= */
+.bookstore-top-bar{
+margin: 200px auto 0px;
+}
+
+/* Search bar aur top bar ke beech smooth spacing */
+.gallery-search-section {
+    width: 100%;
+    max-width: 1300px;
+    margin: 16px auto 0px auto;
+    padding: 0 50px;
+    box-sizing: border-box;
+   
+}
+/* 1. Top Bar "BOOKSTORE" with accurate view specs */
+.bookstore-top-bar {
+    width: 100%;
+    max-width: 1300px;
+    background-color: #fcfbfa; 
+    padding: 24px 20px 10px 20px;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 80px;
+    padding-bottom: 20px;
+}
+
+.bookstore-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    color: #111827;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+/* 2. Search Box Position (Fixes missing visuals above container) */
+.gallery-search-section {
+    width: 100%;
+    max-width: 1300px;
+    padding: 20px 50px;
+    box-sizing: border-box;
+    
+} 
+
+
+
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+    border: 2px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    transition: border-color 0.25s ease;
+}
+
+.search-input-wrapper:focus-within {
+    border-color: #7c3aed;
+}
+
+.search-input-wrapper input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    color: #f1f1f1;
+    font-family: inherit;
+    background: transparent;
+    padding-right: 30px;
+}
+
+.search-input-wrapper input::placeholder {
+    color: #f7f7f7;
+}
+
+.gallery-search-btn {
+    background: transparent;
+    border: none;
+    color: #6b7280;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.gallery-search-btn:hover {
+    color: #f0eef3;
+}
+
+/* 3. Main Catalog Container spacing */
+.gallery-layout-container {
+    width: 100%;
+    max-width: 1300px;
+    margin: 0 auto 50px auto;
+    padding: 0 50px;
+    display: flex;
+    align-items: flex-start;
+    gap: 40px;
+    box-sizing: border-box;
+}
+
+/* ================= ACCORDION & SIDEBAR FILTERS ================= */
+.gallery-sidebar {
+    flex: 0 0 220px;
+    width: 220px;
+    box-sizing: border-box;
+}
+
+.filter-group {
+    border-top: 1px solid #dbe2ea;
+    padding: 18px 0;
+}
+
+.filter-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 25px;
+    font-weight: 900;
+    color: #f6f8fa;
+    cursor: pointer;
+    user-select: none;
+    letter-spacing: 0.3px;
+}
+
+.toggle-icon {
+    font-size: 19px;
+    color: #e4e6e7;
+    line-height: 1;
+    font-weight: 600;
+}
+
+/* Category Collapse Effect */
+.category-list {
+    list-style: none;
+    padding: 12px 0 0 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: all 0.3s ease;
+}
+
+.category-list.collapsed {
+    display: none;
+}
+
+.cat-item {
+    font-size: 20px;
+    color: #e3e4e6;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.cat-item:hover,
+.cat-item.active {
+    color: #f1f4f7;
+    font-weight: 700;
+}
+
+/* ================= PRICE SLIDER ================= */
+.price-slider-wrap {
+    margin-top: 18px;
+    position: relative;
+    width: 100%;
+}
+
+/* Custom Minimalist Track */
+#priceRange {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 3px;
+    background: #334e68;
+    border-radius: 2px;
+    outline: none;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* Custom Thumb Circle */
+#priceRange::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #334e68;
+    cursor: pointer;
+    box-shadow: 0 1px 4px rgba(16, 42, 67, 0.3);
+    transition: transform 0.15s ease;
+}
+
+#priceRange::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+}
+
+#priceRange::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #334e68;
+    border: none;
+    cursor: pointer;
+}
+
+.price-limits {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 20px;
+    color: #ecf0f3;
+    font-weight: 500;
+}
+
+/* ================= FORMATS CHECKBOXES ================= */
+.filter-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    font-size: 20px;
+    color: #eef0f1;
+    user-select: none;
+    gap: 10px;
+}
+
+.custom-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Clean Custom Box */
+.checkmark {
+    width: 15px;
+    height: 15px;
+    border: 1px solid #9fb3c8;
+    border-radius: 2px;
+    background-color: #ffffff;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.custom-checkbox:hover input ~ .checkmark {
+    border-color: #fcfdfd;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+    background-color: #334e68;
+    border-color: #ececec;
+}
+
+.custom-checkbox .checkmark::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 4px;
+    top: 1px;
+    width: 4px;
+    height: 8px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.custom-checkbox input:checked ~ .checkmark::after {
+    display: block;
+}
+
+.label-text {
+    line-height: 1;
+}
+.highlight-cat {
+    color: #ffffff;
+    font-weight: 800;
+}
+
+/* 5. Clean 4-Column Responsive Grid */
+.gallery-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.book-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 24px;
+    row-gap: 32px; /* Fix vertical overlaps */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Hover-elevated book Card */
+.gallery-book-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: transparent;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: transform 0.2s ease;
+}
+
+.gallery-book-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Box Frame prevent scale errors */
+.book-cover-frame {
+    width: 100%;
+    max-width: 180px;
+    height: 250px;
+    background: #fcfbfa;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f1f1ef;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.book-cover-frame img {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain; /* Prevents edge zoom bug */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-book-card:hover .book-cover-frame img {
+    transform: scale(1.04);
+}
+
+/* Card hover par image halki dim hogi taaki Quick View button saaf dikhe */
+.gallery-book-card:hover .book-cover-frame img {
+    transform: scale(1.03);
+    filter: brightness(0.9);
+}
+
+/* ================= 1. QUICK VIEW BUTTON (Exact Centering Fix) ================= */
+.quick-view-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: rgba(255, 255, 255, 0.95);
+    color: #d5d8db;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 30px;
+    text-decoration: none;
+    white-space: nowrap; /* Text ko do line me tootne se rokega */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 5;
+}
+
+.gallery-book-card:hover .quick-view-btn {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.quick-view-btn:hover {
+    background: #102a43;
+    color: #ffffff;
+    border-color: #102a43;
+}
+
+/* ================= 2. BOOK INFO & BUTTONS WRAPPER ================= */
+.book-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 190px;
+}
+
+.book-price-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+/* Button Group Container */
+.card-action-btns {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+}
+
+/* ================= 3. ADD TO CART BUTTON ================= */
+.btn-card-add-cart {
+    width: 100%;
+    padding: 9px 0;
+    background: #102a43; /* Deep Navy Blue */
+    color: #ffffff;
+    border: 1px solid #102a43;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    transition: all 0.2s ease;
+}
+
+.btn-card-add-cart:hover {
+    background: #1e3a5f;
+    border-color: #1e3a5f;
+    box-shadow: 0 4px 10px rgba(16, 42, 67, 0.2);
+}
+
+/* ================= 4. BUY NOW BUTTON ================= */
+.btn-card-buy-now {
+    width: 100%;
+    padding: 8px 0;
+    background: #ffffff;
+    color: #7c3aed; /* Brand Purple */
+    border: 1.5px solid #7c3aed;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    font-family: inherit;
+    letter-spacing: 0.3px;
+    display: inline-block;
+    box-sizing: border-box;
+    transition: all 0.2s ease;
+}
+
+.btn-card-buy-now:hover {
+    background: #7c3aed;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+}
+
+/* Labels with padding fixes */
+.book-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 0 4px;
+    box-sizing: border-box;
+}
+
+.book-name {
+    font-size: 20px;
+    font-weight: 600;
+    color: #ffffff;
+    line-height: 1.35;
+    margin: 0 0 2px 0;
+    min-height: 36px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.info-dash {
+    color: #cbd5e1;
+    font-size: 18px;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+
+.book-price-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.sale-price {
+    color: #f7f8f8;
+    font-weight: 700;
+}
+
+/* 6. Page Navigation */
+/* ================= GALLERY PAGINATION STYLING RESTORE ================= */
+.gallery-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid #f1f5f9;
+    user-select: none;
+}
+
+/* Button & Link reset (Box, border aur grey background hatane ke liye) */
+.gallery-pagination button,
+.gallery-pagination a {
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 4px 8px;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s ease, transform 0.15s ease;
+}
+
+/* Hover Effect */
+.gallery-pagination button:hover:not(:disabled),
+.gallery-pagination a:hover {
+    color: #7c3aed;
+    transform: translateY(-1px);
+}
+
+/* Active Number (Purple highlight) */
+.gallery-pagination button.active,
+.gallery-pagination .page-num.active {
+    color: #7c3aed !important;
+    font-weight: 800 !important;
+}
+
+/* Dots (...) */
+.gallery-pagination .page-dots {
+    color: #94a3b8;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+/* Previous (<) and Next (>) Arrows */
+.gallery-pagination .page-arrow {
+    font-weight: 800;
+    font-size: 24px;
+    color: #475569;
+}
+
+/* Disabled state */
+.gallery-pagination button:disabled {
+    color: #cbd5e1 !important;
+    cursor: not-allowed;
+    transform: none;
+}
+/* Responsive breakpoint scaling */
+@media (max-width: 1024px) {
+    .book-grid {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 16px;
+        row-gap: 26px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-layout-container {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+
+    .gallery-sidebar {
+        width: 100%;
+        margin-bottom: 24px;
+    }
+
+    .category-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .book-grid {
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 14px;
+        row-gap: 24px;
+    }
+
+    .gallery-search-section {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .book-grid {
+        grid-template-columns: 1fr;
+    }
+    .book-cover-frame {
+        max-width: 190px;
+        height: 270px;
+    }
+}
+

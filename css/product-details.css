@@ -1,0 +1,828 @@
+/* ================= PRODUCT DETAILS PAGE STYLES ================= */
+
+.product-page-main {
+    width: 100%;
+    max-width: 1300px;
+    margin: 110px auto 60px auto;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    font-family: 'League Spartan', sans-serif;
+    color: #102a43;
+}
+
+/* 1. Top Navigation Bar */
+.product-top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 35px;
+    font-size: 18px; /* Requirement: Text 18px */
+}
+
+.breadcrumb a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #fbfbfc;
+}
+
+.breadcrumb span {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.book-nav-arrows {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.book-arrow-btn {
+    background: transparent;
+    border: none;
+    font-size: 18px; /* Requirement: 18px */
+    font-weight: 600;
+    color: #ffffff;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.book-arrow-btn:hover {
+    color: #102a43;
+}
+
+.book-nav-arrows .divider {
+    color: #cbd5e1;
+    font-size: 18px;
+}
+
+/* 2. Main 2-Column Product Layout */
+.product-core-container {
+    display: flex;
+    gap: 65px;
+    align-items: flex-start;
+}
+
+/* Left Column */
+.product-left-col {
+    flex: 0 0 52%;
+    max-width: 52%;
+}
+
+.detail-book-frame {
+    width: 100%;
+    max-width: 480px;
+    height: 600px;
+    background: #ffffff;
+    box-shadow: 0 15px 40px rgba(16, 42, 67, 0.12);
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.detail-book-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.book-extended-desc p {
+    font-family: 'Lora', serif;
+    font-size: 20px; /* Requirement: P ka 20px */
+    line-height: 1.8;
+    color: #fafafa;
+    margin-bottom: 24px;
+    text-align: justify;
+}
+
+/* Right Column */
+.product-right-col {
+    flex: 1;
+    position: sticky;
+    top: 110px;
+}
+
+.product-title {
+    font-family: 'League Spartan', sans-serif;
+    font-size: 34px; /* Requirement: Heading 24px+ */
+    font-weight: 700;
+    color: #eeeff0;
+    line-height: 1.25;
+    margin: 0 0 10px 0;
+}
+
+.product-sku {
+    font-size: 18px; /* Requirement: 18px */
+    color: #fdfeff;
+    margin-bottom: 22px;
+}
+
+.product-pricing {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.detail-orig-price {
+    font-size: 24px;
+    text-decoration: line-through;
+    color: #eff0f1;
+}
+
+.detail-sale-price {
+    font-size: 30px;
+    font-weight: 700;
+    color: #102a43;
+}
+
+/* Quantity Control */
+.qty-block label {
+    display: block;
+    font-size: 18px; /* Requirement: 18px */
+    font-weight: 600;
+    color: #f5f7f8;
+    margin-bottom: 10px;
+}
+
+.qty-control {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+
+.qty-control button {
+    background: #f8fafc;
+    border: none;
+    width: 44px;
+    height: 44px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #efeff0;
+    transition: background 0.2s;
+}
+
+.qty-control button:hover {
+    background: #e2e8f0;
+}
+
+.qty-control input {
+    width: 60px;
+    height: 44px;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    outline: none;
+}
+
+/* Action Buttons */
+.product-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 35px;
+}
+
+.btn-add-to-cart {
+    flex: 1;
+    height: 52px;
+    background: #102a43; /* Dark Navy Color from Screenshot */
+    color: #ffffff;
+    border: none;
+    font-size: 18px; /* Requirement: 18px */
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+.btn-add-to-cart:hover {
+    background: #0b1d30;
+}
+
+.btn-wishlist {
+    width: 52px;
+    height: 52px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #e9e9e9;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.btn-wishlist:hover {
+    border-color: #e11d48;
+    color: #e11d48;
+}
+
+/* Accordions */
+.detail-accordions {
+    border-top: 1px solid #e2e8f0;
+}
+
+.acc-item {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.acc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    cursor: pointer;
+    font-size: 20px; /* Requirement: Subheading */
+    font-weight: 600;
+    color: #fcfeff;
+    user-select: none;
+}
+
+.acc-icon {
+    font-size: 20px;
+    color: #627d98;
+}
+
+.acc-content {
+    display: none;
+    padding-bottom: 18px;
+}
+
+.acc-content p,
+.acc-content li {
+    font-size: 18px; /* Requirement: 18px text */
+    line-height: 1.6;
+    color: #fcfeff;
+    margin-bottom: 8px;
+}
+
+.contents-list {
+    padding-left: 20px;
+}
+
+/* ================= 3. RELATED BOOKS SECTION ================= */
+/* =========================================================
+   RELATED BOOKS CAROUSEL FIX (Cards Sizing & Nav Buttons)
+   ========================================================= */
+
+.related-books-section {
+  width: 100% !important;
+  max-width: 1200px !important;
+  margin: 60px auto 40px auto !important;
+  padding: 0 20px !important;
+  box-sizing: border-box !important;
+}
+
+.related-title {
+  font-size: 1.5rem !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  margin-bottom: 24px !important;
+}
+
+/* Wrapper containing Prev Button + Track + Next Button */
+.related-carousel-wrapper {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  gap: 16px !important;
+  width: 100% !important;
+}
+
+/* Scrollable Horizontal Track */
+.related-books-track,
+#relatedTrack {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important; /* Ek hi line me rahenge */
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  scroll-behavior: smooth !important;
+  gap: 20px !important;
+  padding: 10px 4px 20px 4px !important;
+  flex: 1 !important;
+  width: 100% !important;
+  
+  /* Scrollbar hide */
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.related-books-track::-webkit-scrollbar,
+#relatedTrack::-webkit-scrollbar {
+  display: none !important;
+}
+
+/* Single Book Card - Exact 200px Fixed Size */
+.rel-book-card {
+  flex: 0 0 200px !important; /* Sikudega ya failega nahi */
+  width: 200px !important;
+  min-width: 200px !important;
+  max-width: 200px !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  display: flex !important;
+  flex-direction: column !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+  box-sizing: border-box !important;
+}
+
+.rel-book-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.4) !important;
+  border-color: rgba(99, 102, 241, 0.5) !important;
+}
+
+/* Cover Image Box (Image ko 250px me lock karega) */
+.rel-img-box {
+  width: 100% !important;
+  height: 250px !important;
+  max-height: 250px !important;
+  overflow: hidden !important;
+  background: #090214 !important;
+  position: relative !important;
+}
+
+.rel-img-box img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: cover !important; /* Image crop hokar clean fit hogi */
+  display: block !important;
+}
+
+/* Book Details Text */
+.rel-info-box {
+  padding: 12px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  background: #110524 !important;
+}
+
+.rel-book-title {
+  margin: 0 !important;
+  font-size: 0.92rem !important;
+  font-weight: 600 !important;
+  color: #ffffff !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.rel-book-title a {
+  color: #ffffff !important;
+  text-decoration: none !important;
+}
+
+.rel-book-title a:hover {
+  color: #a5b4fc !important;
+}
+
+.rel-author {
+  font-size: 0.8rem !important;
+  color: #94a3b8 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.rel-price-row {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  margin-top: 4px !important;
+}
+
+.rel-sale-price {
+  color: #6366f1 !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+}
+
+.rel-old-price {
+  color: #64748b !important;
+  text-decoration: line-through !important;
+  font-size: 0.82rem !important;
+}
+
+/* < and > Navigation Buttons */
+.related-nav-btn {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  border-radius: 50% !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  font-size: 1.4rem !important;
+  font-weight: bold !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  z-index: 20 !important;
+  flex-shrink: 0 !important;
+  transition: all 0.2s ease !important;
+}
+
+.related-nav-btn:hover {
+  background: #6366f1 !important;
+  border-color: #6366f1 !important;
+  transform: scale(1.1) !important;
+}
+/* ================= QUICK VIEW OVERLAY STYLES FOR GALLERY ================= */
+.book-cover-frame {
+    position: relative;
+}
+
+.quick-view-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    color: #102a43;
+    padding: 8px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s ease;
+}
+
+.gallery-book-card:hover .quick-view-btn {
+    opacity: 1;
+    visibility: visible;
+}
+
+.btn-card-add-cart {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px 12px;
+    background: #102a43;
+    color: #ffffff;
+    border: none;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 2px;
+    display: none;
+}
+
+.gallery-book-card:hover .btn-card-add-cart {
+    display: block;
+}
+
+/* ================= WISHLIST & CART INTERACTION ================= */
+
+/* Heart Button Active (Red Fill on Wishlisted) */
+.btn-wishlist {
+    width: 52px;
+    height: 52px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    color: #102a43;
+    font-size: 22px;
+    cursor: pointer;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.btn-wishlist:hover {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.btn-wishlist.active {
+    background-color: #fee2e2;
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.btn-wishlist.active i {
+    font-weight: 900; /* Solid Red Heart */
+}
+
+/* Badge Counter for Nav Icons */
+.btn-nav-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #334155;
+    font-size: 18px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+.btn-nav-icon:hover {
+    background: #f1f5f9;
+}
+
+.cart-badge-count {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background-color: #ef4444;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    line-height: 1;
+}
+
+/* Shop Toast Popup */
+.shop-toast {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #102a43;
+    color: #ffffff;
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.shop-toast.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .product-core-container {
+        flex-direction: column;
+        gap: 40px;
+    }
+    .product-left-col,
+    .product-right-col {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+    .related-books-track {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ================= 1. NAVBAR HEART ICON (Mockup Match) ================= */
+.nav-wishlist-icon {
+    background: #fee2e2 !important;
+    color: #ef4444 !important;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.nav-wishlist-icon:hover {
+    transform: scale(1.08);
+}
+
+.nav-wishlist-icon i {
+    font-size: 18px;
+    color: #ef4444;
+}
+
+/* Red counter badge */
+.nav-wishlist-icon .cart-badge-count {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    background: #ef4444;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================= 2. BACKGROUND DIM OVERLAY ================= */
+.drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(2px);
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.drawer-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ================= 3. WISHLIST SLIDE-OUT DRAWER ================= */
+.wishlist-drawer {
+    position: fixed;
+    top: 0;
+    right: -420px; /* Hidden offscreen initially */
+    width: 380px;
+    max-width: 90vw;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.15);
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+}
+
+.wishlist-drawer.open {
+    right: 0; /* Slide in */
+}
+
+/* Drawer Header */
+.wishlist-drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.wishlist-drawer-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #102a43;
+    margin: 0;
+}
+
+.btn-close-drawer {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: #64748b;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.btn-close-drawer:hover {
+    color: #0f172a;
+}
+
+/* Wishlist Item List Container */
+.wishlist-items-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Individual Item Card (Exact Mockup Match) */
+.wish-card-item {
+    display: flex;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f1f5f9;
+    align-items: flex-start;
+}
+
+.wish-card-thumb {
+    width: 75px;
+    height: 105px;
+    flex-shrink: 0;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}
+
+.wish-card-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.wish-card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.wish-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.wish-card-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #102a43;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.btn-wish-delete {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    transition: color 0.2s;
+}
+
+.btn-wish-delete:hover {
+    color: #ef4444;
+}
+
+.wish-card-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #102a43;
+    margin: 6px 0 10px 0;
+}
+
+/* "Move to Cart" Navy Blue Button */
+.btn-move-cart {
+    background: #102a43;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.2s ease;
+}
+
+.btn-move-cart:hover {
+    background: #1e3a5f;
+}
+
+.wishlist-empty-msg {
+    text-align: center;
+    color: #94a3b8;
+    font-size: 16px;
+    margin-top: 50px;
+}
+

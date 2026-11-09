@@ -1,0 +1,506 @@
+/* ==========================================================================
+   1. GOOGLE FONTS & CSS VARIABLES
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --font-base: 'Plus Jakarta Sans', sans-serif;
+  --bg-card-top: #ede9fe;
+  --bg-card-bottom: #f8fafc;
+  --text-dark: #0f172a;
+  --text-muted: #64748b;
+  --star-gold: #f59e0b;
+  --badge-red: #ff334b;
+  --btn-navy: #0f172a;
+  --btn-navy-hover: #1e1b4b;
+  --purple-glow: rgba(147, 51, 234, 0.45);
+  --red-glow: rgba(255, 51, 75, 0.7);
+  --card-radius: 20px;
+  --transition-smooth: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ==========================================================================
+   2. SECTION CONTAINER & BASE
+   ========================================================================== */
+#featured-products.products-section {
+  width: 100%;
+  max-width: 1420px;
+  margin: 0 auto;
+  padding: 60px 24px 90px 24px;
+  box-sizing: border-box;
+  font-family: var(--font-base);
+  position: relative;
+  z-index: 10;
+}
+
+/* Section Header Styling */
+.section-header-box {
+  margin-bottom: 32px;
+  text-align: left;
+}
+
+.section-tag-pill  {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #d8b4fe;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  backdrop-filter: blur(8px);
+}
+
+.section-title{
+  font-size: 5rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.025em;
+  margin: 0 0 6px 0;
+}
+
+.section-subtitle p {
+  font-size: 1.95rem;
+  color: #a39bb8;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ==========================================================================
+   3. PRODUCTS GRID LAYOUT (5 CARDS IN A ROW)
+   ========================================================================== */
+.pro-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  width: 100%;
+}
+
+/* ==========================================================================
+   4. PRODUCT CARD STRUCTURE & HOVER EFFECTS
+   ========================================================================== */
+.pro-card {
+  background: linear-gradient(180deg, var(--bg-card-top) 0%, var(--bg-card-bottom) 100%);
+  border-radius: var(--card-radius);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  padding: 14px 14px 16px 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.3s ease;
+  overflow: hidden;
+  will-change: transform;
+  background: linear-gradient(180deg, #d8cefa 0%, #ebe5fc 40%, #ffffff 80%) !important;
+  border-radius: 20px !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3) !important;
+  overflow: hidden !important;
+}
+/* 1. Parent box par extra background ya shapes band karein */
+.pro-img-box {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.pro-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 24px 42px rgba(0, 0, 0, 0.45), 0 0 15px rgba(237, 233, 254, 0.2);
+  border-color: #ffffff;
+}
+
+/* ==========================================================================
+   5. PRODUCT IMAGE BOX & 3D HOVER ANIMATIONS
+   ========================================================================== */
+.pro-img-box {
+  position: relative;
+  width: 100%;
+  height: 230px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.pro-img-box img {
+  max-width: 82%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px 8px 8px 4px;
+  filter: drop-shadow(-10px 14px 18px rgba(0, 0, 0, 0.38));
+  transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.35s ease;
+  will-change: transform;
+}
+
+/* Card hover par 3D pop & tilt effect */
+.pro-card:hover .pro-img-box img {
+  transform: scale(1.07) rotateY(-8deg) translateY(-4px);
+  filter: drop-shadow(-16px 20px 24px rgba(0, 0, 0, 0.48));
+}
+
+/* Book par mouse click (active state bounce) */
+.pro-img-box:active img {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+}
+
+/* ==========================================================================
+   6. TOP BADGES & ICONS (DISCOUNT PILL & WISHLIST)
+   ========================================================================== */
+/* Glowing Red Discount Pill (-20%) */
+.pro-badge.promo-badge {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  background: var(--badge-red);
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  box-shadow: 0 0 18px var(--red-glow);
+  z-index: 5;
+  letter-spacing: 0.2px;
+  animation: pulse-glow 3s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 16px var(--red-glow);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(255, 51, 75, 0.95);
+  }
+}
+
+/* Floating Circular Wishlist Button */
+.btn-card-wishlist {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.65);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  color: #1e1b4b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: var(--transition-smooth);
+  z-index: 5;
+  outline: none;
+}
+
+.btn-card-wishlist:hover {
+  background: #ffffff;
+  color: #ef4444;
+  transform: scale(1.15) rotate(6deg);
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.35);
+}
+
+.btn-card-wishlist:active {
+  transform: scale(0.9);
+}
+
+/* ==========================================================================
+   7. QUICK VIEW BUTTON ZOOM-IN OVERLAY
+   ========================================================================== */
+.quick-view-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background: rgba(255, 255, 255, 0.95);
+    color: #d5d8db;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 30px;
+    text-decoration: none;
+    white-space: nowrap; /* Text ko do line me tootne se rokega */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.18);
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 5;
+}
+.pro-card:hover .quick-view-btn {
+ opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.quick-view-btn:hover {
+background: #102a43;
+    color: #ffffff;
+    border-color: #102a43;
+}
+
+/* ==========================================================================
+   8. CARD DETAILS (RATING, TITLE & SKU)
+   ========================================================================== */
+.pro-details {
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Golden Star Ratings */
+.star {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 6px;
+}
+
+.star i {
+  color: var(--star-gold);
+  font-size: 0.75rem;
+}
+
+/* Book Title */
+.pro-title {
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 2px 0;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+/* Author / Category (Hidden as per reference layout) */
+.pro-author {
+  display: none;
+}
+
+/* SKU Number */
+.pro-sku {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+/* Price Box */
+.pro-price-box {
+  display: none;
+}
+
+/* ==========================================================================
+   9. INTERACTIVE ACTION BUTTONS
+   ========================================================================== */
+.card-action-btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+}
+
+/* Add to Cart Pill Button */
+.btn-card-add-cart {
+  flex: 1.2;
+  background: var(--btn-navy);
+  color: #ffffff;
+  border: none;
+  outline: none;
+  padding: 8.5px 10px;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-card-add-cart:hover {
+  background: var(--btn-navy-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.35);
+}
+
+.btn-card-add-cart:active {
+  transform: translateY(0);
+}
+
+.btn-card-add-cart i {
+  display: none;
+}
+
+/* Buy Now Pill Button */
+.btn-card-buy-now {
+  flex: 0.9;
+  background: #ffffff;
+  color: #7c3aed;
+  border: 1px solid #c4b5fd;
+  outline: none;
+  padding: 7.5px 10px;
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-card-buy-now:hover {
+  background: #ede9fe;
+  border-color: #7c3aed;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+}
+
+.btn-card-buy-now:active {
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   10. BOTTOM VIEW MORE BUTTON
+   ========================================================================== */
+.view-more-container {
+  text-align: center;
+  margin-top: 48px;
+  width: 100%;
+}
+
+.btn-view-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 9999px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+}
+
+.btn-view-more:hover {
+  background: linear-gradient(90deg, #4f46e5 0%, #9333ea 100%);
+  border-color: transparent;
+  box-shadow: 0 0 24px var(--purple-glow);
+  transform: translateY(-2px);
+}
+
+.btn-view-more:hover i {
+  transform: translateX(4px);
+}
+
+.btn-view-more i {
+  transition: transform 0.2s ease;
+}
+
+/* ==========================================================================
+   11. FULLSCREEN ZOOM LIGHTBOX MODAL (BOOK CLICK ANIMATION)
+   ========================================================================== */
+.book-zoom-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 4, 18, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  cursor: zoom-out;
+}
+
+.book-zoom-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.book-zoom-lightbox img {
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 0 0 35px rgba(168, 85, 247, 0.35);
+  transform: scale(0.65);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.book-zoom-lightbox.active img {
+  transform: scale(1);
+}
+
+.book-zoom-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  color: #ffffff;
+  font-size: 2.2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.book-zoom-close:hover {
+  color: #f43f5e;
+  transform: scale(1.2);
+}
+
+/* ==========================================================================
+   12. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1240px) {
+  .pro-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .pro-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .section-title {
+    font-size: 1.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pro-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .pro-img-box {
+    height: 190px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pro-container {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}

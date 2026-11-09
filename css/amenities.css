@@ -1,0 +1,171 @@
+/* ================= AMENITIES DEDICATED STYLES ================= */
+.amenities-hero {
+    margin-top: 200px;
+    text-align: center;
+    padding: 70px 20px 40px;
+    background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+}
+
+.hero-tag {
+    display: inline-block;
+    background: #ede9fe;
+    color: #7c3aed;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 15px;
+}
+
+.amenities-hero h1 {
+    font-size: 38px;
+    font-weight: 800;
+    color: #102a43;
+    margin: 0 0 12px;
+}
+
+.amenities-hero p {
+    font-size: 17px;
+    color: #627d98;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* Card Grid */
+.amenities-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto 80px;
+    padding: 0 10px;
+}
+
+.amenities-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.perk-card {
+    background: #ffffff;
+    border: 1.5px solid #f1f5f9;
+    border-radius: 18px;
+    padding: 35px 28px;
+    box-shadow: 0 6px 20px rgba(16, 42, 67, 0.04);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.perk-card:hover {
+    transform: translateY(-6px);
+    border-color: #c4b5fd;
+    box-shadow: 0 15px 35px rgba(124, 58, 237, 0.12);
+}
+
+.perk-icon-wrap {
+    width: 60px;
+    height: 60px;
+    border-radius: 14px;
+    background: #f5f3ff;
+    color: #7c3aed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    margin-bottom: 22px;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.perk-card:hover .perk-icon-wrap {
+    background: #7c3aed;
+    color: #ffffff;
+}
+
+.perk-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #102a43;
+    margin: 0 0 10px;
+}
+
+.perk-card p {
+    font-size: 15px;
+    color: #627d98;
+    line-height: 1.6;
+    margin: 0 0 22px;
+    flex-grow: 1;
+}
+
+.btn-perk-detail {
+    background: transparent;
+    border: 1.5px solid #7c3aed;
+    color: #7c3aed;
+    padding: 8px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-perk-detail:hover {
+    background: #7c3aed;
+    color: #ffffff;
+}
+
+/* Modal Popup */
+.amenity-modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    backdrop-filter: blur(4px);
+}
+
+.amenity-modal-backdrop.active {
+    display: flex;
+}
+
+.amenity-modal-box {
+    background: #ffffff;
+    width: 90%;
+    max-width: 480px;
+    border-radius: 16px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.amenity-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.amenity-modal-box h3 {
+    color: #102a43;
+    font-size: 22px;
+    margin: 0 0 12px;
+}
+
+.amenity-modal-box p {
+    color: #486581;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+}

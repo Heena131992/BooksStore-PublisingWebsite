@@ -1,0 +1,1499 @@
+/* ==========================================================================
+   EXACT IMAGE 2 REPLICA NAVBAR STYLES
+   ========================================================================== */
+
+/* Outer container ko screen ke top par fix karna */
+.floating-navbar-container {
+  position: fixed !important;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px); /* Side se 20px padding banaye rakhega */
+  max-width: 1480px;
+  z-index: 1000; /* Content ke upar float karega */
+  padding: 0 !important;
+  background: transparent !important;
+}
+
+
+/* Navbar fixed hone par neeche ka Hero content chhupe na, isliye hero section me top margin/padding */
+#header + section,
+.hero-container,
+main {
+  padding-top: 180px !important;
+}
+
+/* ==========================================================================
+   2. PERFECT FROSTED TRANSPARENCY (GLASS LOOK)
+   ========================================================================== */
+
+.floating-navbar {
+  /* Halka white tint taaki piche ka violet/purple ambient color clearly dikhe */
+  background: rgba(255, 255, 255, 0.04) !important;
+  
+  /* Frosted glass blur effect */
+  backdrop-filter: blur(24px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(160%) !important;
+
+  /* Subtle border + inner top highlight taaki glass ka 3D edge dikhe */
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 24px !important;
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18) !important;
+
+  padding: 18px 32px 22px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ==========================================================================
+   3. BODY BACKGROUND GLOW (Transparency dikhane ke liye zaroori)
+   ========================================================================== */
+
+/* Glass effect tab tak visually achha nahi lagta jab tak background me light spots na hon */
+body {
+  background: 
+    radial-gradient(circle at 50% 10%, rgba(138, 58, 237, 0.35) 0%, transparent 40%),
+    radial-gradient(circle at 80% 25%, rgba(236, 72, 153, 0.25) 0%, transparent 35%),
+    linear-gradient(135deg, #100820 0%, #1c0e35 50%, #090414 100%) !important;
+  background-attachment: fixed !important;
+}
+
+/* 2. Top Bar Flexbox */
+.nav-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* 3. Brand / Logo */
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.brand-icon {
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #c084fc 0%, #ec4899 100%);
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+/* 4. Menu Links */
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 26px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  font-size: 1.5rem; /* 14px sleek typography */
+  font-weight: 500;
+  color: #c7bed9;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 5px;
+  transition: color 0.2s ease;
+}
+
+.nav-item:hover {
+  color: #ffffff;
+}
+
+/* Image 2 Active Underline Effect */
+.nav-item.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.nav-item.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+/* 5. Right Side Buttons */
+.nav-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Heart & Cart Glass Squares */
+.btn-nav-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: #ded8eb !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  font-size: 1.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-nav-icon:hover {
+  background: rgba(255, 255, 255, 0.16) !important;
+  color: #ffffff !important;
+}
+
+/* Cart Purple Badge '8' */
+.cart-badge-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #9333ea !important;
+  color: #ffffff !important;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 2.5px 5px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+/* Cart ani Wishlist badge count la Red color karnyasathi */
+#navCartCount,
+#navWishlistCount {
+  background: #ef4444 !important; /* Bright Red background */
+  color: #ffffff !important;      /* White text */
+  border: 1px solid rgba(255, 255, 255, 0.4) !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.7) !important; /* Red glow effect */
+}
+/* Login Glass Capsule Button */
+.btn-login {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  border-radius: 9999px;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 8px 18px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-login:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Contact Now Vibrant Glowing Button */
+.btn-contact {
+  background: linear-gradient(90deg, #4f46e5 0%, #9333ea 100%) !important;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 8.5px 22px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 20px rgba(147, 51, 234, 0.6) !important;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-contact:hover {
+  box-shadow: 0 0 28px rgba(147, 51, 234, 0.85) !important;
+  transform: translateY(-1px);
+}
+
+/* 6. Centered Search Pill with Dual Glow Border */
+.home-search-box {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 9px 22px;
+  border-radius: 9999px;
+  
+  /* Glass fill */
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  /* Dual Edge Glow (Cyan left, Violet right) */
+  border: 1px solid rgba(56, 189, 248, 0.35) !important;
+  box-shadow: 
+    0 0 15px rgba(56, 189, 248, 0.15),
+    inset 0 0 14px rgba(168, 85, 247, 0.18) !important;
+}
+
+#homeSearchInput {
+  width: 100%;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  color: #ffffff !important;
+  font-size: 1.5rem;
+}
+
+#homeSearchInput::placeholder {
+  color: #9f96b3;
+}
+
+#homeSearchBtn {
+  background: transparent !important;
+  border: none !important;
+  color: #c4b5fd;
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+#homeSearchBtn:hover {
+  color: #ffffff;
+}
+
+/* Icon Buttons (Wishlist & Cart) */
+.btn-nav-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  /* White background ko transparent glass me badlein */
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: #e2e8f0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  padding: 0;
+}
+
+.btn-nav-icon i {
+  color: #e2e8f0 !important;
+  font-size: 1.5rem;
+}
+
+.btn-nav-icon:hover {
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+/* Badge Styling */
+.cart-badge-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  background: #a855f7 !important;
+  color: #ffffff !important;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 9999px;
+  padding: 2px 5px;
+  line-height: 1;
+}
+
+/* Login Button */
+.btn-login {
+background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 9px 18px;
+  color: #ffffff;
+  font-size: 1.5rem; /* 14px */
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-login:hover {
+  color: #ffffff;
+}
+
+/* Contact Button */
+.btn-contact {
+ background: linear-gradient(90deg, #6366f1 0%, #a855f7 100%);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 10px 22px;
+  color: #ffffff;
+  font-size: 1.5rem; /* 14px */
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 0 16px rgba(168, 85, 247, 0.55);
+}
+
+.btn-contact:hover {
+  opacity: 0.92;
+  box-shadow: 0 6px 24px rgba(124, 58, 237, 0.6);
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   6. MODAL OVERLAY & BOXES (SEARCH & LOGIN)
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 4, 16, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease-in-out;
+  padding: 20px;
+}
+
+/* Active State for Modals (add via JS) */
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-close-icon {
+  background: transparent;
+  border: none;
+  color: #a39bb8;
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.modal-close-icon:hover {
+  color: #ffffff;
+}
+
+/* --- Search Modal Box --- */
+.search-modal-box {
+  background: rgba(22, 13, 38, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 600px;
+  padding: 24px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+}
+
+.search-modal-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 14px;
+}
+
+.search-modal-icon {
+  color: #a39bb8;
+  font-size: 1.1rem;
+}
+
+#searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+#searchInput::placeholder {
+  color: #6b6380;
+}
+
+.search-modal-body {
+  padding-top: 18px;
+}
+
+.search-tag-title {
+  font-size: 0.78rem;
+  color: #a39bb8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.search-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-item {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #d8b4fe;
+  font-size: 0.8rem;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tag-item:hover {
+  background: rgba(124, 58, 237, 0.25);
+  color: #ffffff;
+}
+
+/* --- Login Modal Box --- */
+.login-modal-box {
+  background: rgba(22, 13, 38, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 420px;
+  padding: 28px;
+  position: relative;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+}
+
+.login-modal-box .modal-close-icon {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+}
+
+.modal-header h3 {
+  color: #ffffff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.modal-header p {
+  color: #a39bb8;
+  font-size: 0.85rem;
+  margin-bottom: 22px;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-field label {
+  color: #e2e8f0;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.input-field input {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 14px;
+  color: #ffffff;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.input-field input:focus {
+  border-color: rgba(168, 85, 247, 0.8);
+}
+
+.input-field input::placeholder {
+  color: #6b6380;
+}
+
+.btn-modal-submit {
+  background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 6px;
+  box-shadow: 0 4px 16px rgba(124, 58, 237, 0.4);
+  transition: opacity 0.2s ease;
+}
+
+.btn-modal-submit:hover {
+  opacity: 0.92;
+}
+
+/* ==========================================================================
+   7. RESPONSIVE BREAKPOINTS
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .nav-menu {
+    display: none; /* Tablet / mobile view navigation hidden */
+  }
+
+  .home-search-box {
+    display: none; /* Large search hides in navbar, triggered via modal */
+  }
+}
+
+@media (max-width: 640px) {
+  .floating-navbar-container {
+    padding: 14px 12px 0 12px;
+  }
+
+  .floating-navbar {
+    padding: 10px 16px;
+  }
+/* ==========================================================================
+   3. FEATURES SERVICES BADGES SECTION
+   ========================================================================== */
+
+.features-section {
+  width: 100%;
+  padding: 35px 0 45px 0;
+  background-color: #ffffff;
+}
+
+/* 90% Container Grid */
+.features-container {
+  width: 90%;
+  max-width: 1350px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 18px;
+  box-sizing: border-box;
+}
+
+/* Feature Card Frame */
+.feature-card {
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 14px;
+  padding: 22px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover Lift & Glow */
+.feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+  border-color: #cbd5e1;
+}
+
+/* Icon Container */
+.feature-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  transition: transform 0.4s ease;
+}
+
+.feature-card:hover .feature-icon-wrapper {
+  transform: scale(1.12) rotate(3deg);
+}
+
+.feature-icon-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Tag Text Pill */
+.feature-tag {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 6px;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* ================= HOME BOOK CARDS INTERACTIVE STYLES ================= */
+.pro-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #f1f5f9;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pro-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(16, 42, 67, 0.08);
+}
+
+.pro-img-box {
+    position: relative;
+    width: 100%;
+    max-width: 190px;
+    height: 260px;
+    background: #f8fafc;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pro-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.pro-card:hover .pro-img-box img {
+    transform: scale(1.04);
+    filter: brightness(0.92);
+}
+
+/* 1. TOP-RIGHT FLOATING WISHLIST HEART BUTTON */
+.btn-card-wishlist {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 8;
+    color: #475569;
+    font-size: 15px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.btn-card-wishlist:hover {
+    transform: scale(1.12);
+    color: #ef4444;
+}
+
+/* Active Wishlisted State */
+.btn-card-wishlist.active {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.btn-card-wishlist.active i {
+    font-weight: 900;
+}
+
+/* 2. CENTERED QUICK VIEW BUTTON */
+/* Card Image Container (Zaroori: overflow hidden taaki button bahar chhipa rahe) */
+.pro-img-box {
+  position: relative;
+  width: 100%;
+  height: 310px;
+  overflow: hidden; /* Button ko boundary ke bahar hide rakhega */
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Images transition */
+.pro-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;
+}
+
+.pro-card:hover .pro-img-box img {
+  transform: scale(1.05);
+}
+
+/* ========================================================
+   SQUARE BOTTOM STRIP QUICK VIEW (Image 2 jaisa)
+   ======================================================== */
+.quick-view-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%; /* Pura bottom strip cover karega */
+  padding: 13px 0;
+  
+  /* Pure Square Design (No Pill/Circle) */
+  border-radius: 0;
+  border: none;
+  border-top: 1px solid rgba(226, 232, 240, 0.8);
+  
+  /* Clean White Semi-Transparent Background */
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  color: #0b1a30;
+  
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  z-index: 10;
+  
+  /* DEFAULT STATE: Cover ke bilkul niche hidden rahega */
+  transform: translateY(100%);
+  opacity: 0;
+  visibility: hidden;
+  
+  /* Ultra-Smooth Upward Transition */
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.25s ease,
+              background-color 0.2s ease,
+              color 0.2s ease;
+}
+
+/* HOVER EFFECT: Card ya Image par mouse aate hi smooth slide-up */
+.pro-card:hover .quick-view-btn,
+.pro-img-box:hover .quick-view-btn {
+  transform: translateY(0); /* Niche se nikal kar theek bottom par aayega */
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Quick View Button par Mouse Hover Effect */
+.quick-view-btn:hover {
+  background: #6366f1;
+  color: #ffffff;
+}
+/* 3. DETAILS & ACTIONS */
+.pro-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pro-author {
+    font-size: 13px;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.pro-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #102a43;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.pro-price-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.orig-price {
+    font-size: 14px;
+    color: #94a3b8;
+    text-decoration: line-through;
+}
+
+.sale-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #102a43;
+}
+
+.card-action-btns {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.btn-card-add-cart {
+    width: 100%;
+    padding: 8px 0;
+    background: #102a43;
+    color: #ffffff;
+    border: 1px solid #102a43;
+    border-radius: 4px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-card-add-cart:hover {
+    background: #1e3a5f;
+}
+
+.btn-card-buy-now {
+    width: 100%;
+    padding: 7px 0;
+    background: #ffffff;
+    color: #7c3aed;
+    border: 1.5px solid #7c3aed;
+    border-radius: 4px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-card-buy-now:hover {
+    background: #7c3aed;
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Pastel Theme Variations (Matching Screenshot 032)
+   -------------------------------------------------------------------------- */
+
+/* 1. Free Shipping (Pink) */
+.f-pink .feature-icon-wrapper { color: #f43f5e; }
+.f-pink .feature-tag {
+  background-color: #ffe4e6;
+  color: #e11d48;
+}
+.f-pink:hover .feature-tag {
+  background-color: #f43f5e;
+  color: #ffffff;
+}
+
+/* 2. Order Online (Blue) */
+.f-blue .feature-icon-wrapper { color: #3b82f6; }
+.f-blue .feature-tag {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+.f-blue:hover .feature-tag {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+/* 3. Save Money (Cyan/Mint) */
+.f-cyan .feature-icon-wrapper { color: #06b6d4; }
+.f-cyan .feature-tag {
+  background-color: #ccfbf1;
+  color: #0f766e;
+}
+.f-cyan:hover .feature-tag {
+  background-color: #0d9488;
+  color: #ffffff;
+}
+
+/* 4. Promotions (Purple) */
+.f-purple .feature-icon-wrapper { color: #8b5cf6; }
+.f-purple .feature-tag {
+  background-color: #ede9fe;
+  color: #6d28d9;
+}
+.f-purple:hover .feature-tag {
+  background-color: #7c3aed;
+  color: #ffffff;
+}
+
+/* 5. Happy Sell (Orange/Amber) */
+.f-orange .feature-icon-wrapper { color: #f97316; }
+.f-orange .feature-tag {
+  background-color: #ffedd5;
+  color: #c2410c;
+}
+.f-orange:hover .feature-tag {
+  background-color: #ea580c;
+  color: #ffffff;
+}
+
+/* 6. 24/7 Support (Emerald Green) */
+.f-green .feature-icon-wrapper { color: #10b981; }
+.f-green .feature-tag {
+  background-color: #d1fae5;
+  color: #047857;
+}
+.f-green:hover .feature-tag {
+  background-color: #059669;
+  color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Layout
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .features-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .features-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  .feature-card {
+    padding: 16px 10px;
+  }
+  
+  .feature-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    font-size: 24px;
+  }
+}
+
+/* ==========================================================================
+   4. FEATURED PRODUCTS SECTION
+   ========================================================================== */
+
+.featured-products-section {
+  width: 100%;
+  padding: 50px 0 65px 0;
+  background-color: #fafbfc;
+  border-top: 1px solid #f1f5f9;
+}
+
+.featured-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.featured-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 34px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 6px;
+  letter-spacing: -0.4px;
+}
+
+.featured-subtitle {
+  font-size: 13.5px;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+/* 4-Column Grid */
+.featured-books-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+  margin-bottom: 40px;
+}
+
+/* Individual Book Card */
+.featured-card {
+  background: #ffffff;
+  border: 1px solid #eef2f6;
+  border-radius: 16px;
+  padding: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
+              box-shadow 0.35s ease,
+              border-color 0.35s ease;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.featured-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 32px rgba(15, 23, 42, 0.09);
+  border-color: #cbd5e1;
+}
+
+/* Badge (e.g. "HOT", "SALE") */
+.card-badge {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  background: #ea580c;
+  color: #ffffff;
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 5;
+}
+
+/* Wishlist Heart Icon */
+.card-wishlist-btn {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  font-size: 14px;
+  cursor: pointer;
+  z-index: 5;
+  transition: all 0.25s ease;
+}
+
+.card-wishlist-btn:hover,
+.card-wishlist-btn.active {
+  color: #ef4444;
+  background: #ffffff;
+  border-color: #fca5a5;
+  transform: scale(1.1);
+}
+
+/* Image Thumbnail Container (Portrait 2:3) */
+.card-thumb-wrap {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #f1f5f9;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-thumb-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.45s ease;
+}
+
+.featured-card:hover .card-thumb-wrap img {
+  transform: scale(1.04);
+}
+
+/* Card Body Details */
+.card-info {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.card-category {
+  font-size: 11px;
+  font-weight: 600;
+  color: #7c3aed;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+.card-title {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.3;
+  margin-bottom: 4px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-author {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+
+/* Ratings */
+.card-rating {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #f59e0b;
+  margin-bottom: 12px;
+}
+
+.card-rating span {
+  color: #94a3b8;
+  font-size: 11px;
+  margin-left: 4px;
+}
+
+/* Pricing & Add-to-Cart Row */
+.card-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.card-price-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-old-price {
+  font-size: 11.5px;
+  text-decoration: line-through;
+  color: #94a3b8;
+}
+
+.card-final-price {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.card-cart-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: #f1ebd8;
+  border: none;
+  color: #111827;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.card-cart-btn:hover {
+  background: #7c3aed;
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* Explore All Button Wrap */
+.featured-cta-wrap {
+  text-align: center;
+}
+
+.btn-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 11px 28px;
+  border-radius: 30px;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn-view-all:hover {
+  background: #7c3aed;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .featured-books-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-books-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-books-grid {
+    grid-template-columns: 1fr;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* ================= VIEW MORE BUTTON STYLING ================= */
+.view-more-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 45px;
+    margin-bottom: 20px;
+}
+
+.btn-view-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: #102a43; /* Brand Navy Color */
+    color: #ffffff;
+    font-size: 18px; /* Requirement: Text 18px */
+    font-weight: 700;
+    text-decoration: none;
+    padding: 14px 34px;
+    border-radius: 40px;
+    box-shadow: 0 8px 20px rgba(16, 42, 67, 0.15);
+    border: 2px solid #102a43;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.btn-view-more i {
+    font-size: 16px;
+    transition: transform 0.25s ease;
+}
+
+/* Hover Effect */
+.btn-view-more:hover {
+    background: #7c3aed; /* Brand Purple */
+    border-color: #7c3aed;
+    color: #ffffff;
+    box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+    transform: translateY(-2px);
+}
+
+.btn-view-more:hover i {
+    transform: translateX(5px); /* Arrow slight right slide */
+}
+
+/* Active Click Effect */
+.btn-view-more:active {
+    transform: translateY(0);
+}}
+
+
+
+
+
+
+
+
+/* =========================================================
+   HAMBURGER BUTTON & MOBILE DRAWER CSS (ONLY MOBILE)
+   ========================================================= */
+
+/* Desktop par button hidden rahega */
+.hamburger-btn {
+  display: none;
+  background: transparent !important;
+  border: none !important;
+  color: #ffffff !important;
+  font-size: 1.55rem !important;
+  cursor: pointer !important;
+  padding: 4px 6px !important;
+  line-height: 1 !important;
+  transition: color 0.2s ease;
+}
+
+.hamburger-btn:hover {
+  color: #a5b4fc !important;
+}
+
+/* Background dark blur overlay */
+.mobile-drawer-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  backdrop-filter: blur(5px) !important;
+  z-index: 9998 !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  transition: opacity 0.3s ease, visibility 0.3s ease !important;
+}
+
+.mobile-drawer-overlay.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Right slide-in drawer panel */
+.mobile-menu-drawer {
+  position: fixed !important;
+  top: 0 !important;
+  right: -320px !important;
+  width: 290px !important;
+  max-width: 85vw !important;
+  height: 100vh !important;
+  background: #140529 !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: -10px 0 35px rgba(0, 0, 0, 0.7) !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 24px !important;
+  box-sizing: border-box !important;
+  transition: right 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
+
+.mobile-menu-drawer.active {
+  right: 0 !important;
+}
+
+/* Drawer top header & close (X) button */
+.drawer-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding-bottom: 16px !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.drawer-close-btn {
+  background: transparent !important;
+  border: none !important;
+  color: #cbd5e1 !important;
+  font-size: 2rem !important;
+  line-height: 1 !important;
+  cursor: pointer !important;
+  transition: color 0.2s ease;
+}
+
+.drawer-close-btn:hover {
+  color: #ffffff !important;
+}
+
+/* Drawer navigation links */
+.mobile-nav-menu {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 20px 0 0 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  flex: 1 !important;
+}
+
+.mobile-nav-menu li a {
+  display: block !important;
+  color: #cbd5e1 !important;
+  text-decoration: none !important;
+  font-size: 1.05rem !important;
+  padding: 10px 14px !important;
+  border-radius: 8px !important;
+  transition: all 0.2s ease !important;
+}
+
+.mobile-nav-menu li a:hover,
+.mobile-nav-menu li a.active {
+  color: #ffffff !important;
+  background: rgba(99, 102, 241, 0.2) !important;
+  font-weight: 700 !important;
+}
+
+/* Drawer bottom login & contact buttons */
+.mobile-drawer-actions {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+  margin-top: auto !important;
+  padding-top: 18px !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.mobile-btn-login {
+  background: transparent !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  padding: 10px !important;
+  font-weight: 600 !important;
+  font-size: 0.95rem !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  border-radius: 20px !important;
+  cursor: pointer !important;
+  transition: background 0.2s ease;
+}
+
+.mobile-btn-login:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.mobile-btn-contact {
+  background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%) !important;
+  color: #ffffff !important;
+  text-align: center !important;
+  padding: 11px !important;
+  border-radius: 20px !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  font-size: 0.95rem !important;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4) !important;
+}
+
+/* =========================================================
+   MOBILE / ANDROID MEDIA QUERY TRIGGER (<= 992px)
+   ========================================================= */
+@media (max-width: 992px) {
+  /* Desktop navigation links aur action buttons hide */
+  .nav-menu,
+  .btn-login,
+  .btn-contact {
+    display: none !important;
+  }
+
+  /* Hamburger icon visible karein */
+  .hamburger-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    margin-left: 6px !important;
+  }
+}

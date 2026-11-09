@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Store | Book Store</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- CSS Folder se sabhi component styles linking -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/Hero.css">
+    <link rel="stylesheet" href="css/Products.css">
+    <link rel="stylesheet" href="css/features.css">
+    <!-- <link rel="stylesheet" href="css/NewArrivals.css"> -->
+    <link rel="stylesheet" href="css/amenities.css">
+    <link rel="stylesheet" href="css/Products.css">
+    <link rel="stylesheet" href="css/Banners.css">
+    <link rel="stylesheet" href="css/Footer.css">
+
+    
+</head>
+
+<body>
+   <!-- 1. Header Section -->
+<section id="header">
+  <div class="floating-navbar-container">
+    <nav class="floating-navbar">
+      
+      <!-- Top Row: Logo, Menu, Action Buttons -->
+      <div class="nav-top-row">
+        <!-- Logo -->
+        <a href="index.html" class="nav-brand">
+          <i class="fa-solid fa-book-open brand-icon"></i>
+          <div>
+            <span class="brand-text">Mindful Pages</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-item active">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+          <li><a href="amenities.html" class="nav-item">Amenities</a></li>
+          <li><a href="publish.html" class="nav-item">Publish with Us</a></li>
+          <li><a href="blog.html" class="nav-item">Blog</a></li>
+        </ul>
+
+        <!-- Right Side Button Group -->
+        <div class="nav-btn-group">
+          <!-- Wishlist -->
+          <button type="button" class="btn-nav-icon nav-wishlist-icon" id="openWishlistBtn" aria-label="Wishlist">
+            <i class="fa-regular fa-heart"></i>
+            <span class="cart-badge-count" id="navWishlistCount">0</span>
+          </button>
+
+          <!-- Cart with Purple Badge -->
+          <button type="button" class="btn-nav-icon" id="openCartBtn" aria-label="Cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge-count" id="navCartCount">0</span>
+          </button>
+
+          <!-- Login Capsule -->
+          <button class="btn-login" id="openLoginModal">Login</button>
+
+          <!-- Glowing Contact Button -->
+          <a href="#contact" class="btn-contact">Contact Now</a>
+
+          <!-- Hamburger Toggle Button (Mobile/Android) -->
+          <button type="button" class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle Menu">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Center Floating Search Bar -->
+      <div class="home-search-box">
+        <input 
+          type="text" 
+          id="homeSearchInput" 
+          placeholder="What are you looking for?" 
+          autocomplete="off" 
+        />
+        <button type="button" id="homeSearchBtn" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+    </nav>
+  </div>
+
+  <!-- Mobile Drawer Overlay & Panel -->
+  <div class="mobile-drawer-overlay" id="drawerOverlay"></div>
+  <aside class="mobile-menu-drawer" id="mobileDrawer">
+    <div class="drawer-header">
+      <div class="nav-brand">
+        <i class="fa-solid fa-book-open brand-icon"></i>
+        <span class="brand-text">Mindful Pages</span>
+      </div>
+      <button type="button" class="drawer-close-btn" id="drawerCloseBtn" aria-label="Close Menu">&times;</button>
+    </div>
+
+    <ul class="mobile-nav-menu">
+      <li><a href="index.html" class="nav-item active">Home</a></li>
+      <li><a href="about.html" class="nav-item">About</a></li>
+      <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+      <li><a href="amenities.html" class="nav-item">Amenities</a></li>
+      <li><a href="publish.html" class="nav-item">Publish with Us</a></li>
+      <li><a href="blog.html" class="nav-item">Blog</a></li>
+    </ul>
+
+    <div class="mobile-drawer-actions">
+      <button class="mobile-btn-login" id="mobileLoginBtn">Login</button>
+      <a href="#contact" class="mobile-btn-contact">Contact Now</a>
+    </div>
+  </aside>
+</section>
+<!-- Modern 2-Column Hero Section -->
+<!-- ================= HERO 50-50 SPLIT SECTION ================= -->
+<section id="hero" class="hero-split-container">
+  <!-- 1. LEFT COLUMN -->
+  <div class="hero-left-col">
+    <span class="hero-tag-pill">Direct Author Publishing</span>
+    <h1 class="hero-main-title">
+      Super Value Deals on <br />
+      <span class="gradient-text">Original Best Editions</span>
+    </h1>
+    <p class="hero-para">
+      Save more with coupons, verified inventory discounts & enjoy up to 70% off on award-winning titles delivered straight to your doorstep.
+    </p>
+
+    <div class="hero-cta-group">
+      <a href="bookstore.html" class="hero-btn-primary">
+        <span>Shop Collection</span>
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
+      <a href="#new-arrivals" class="hero-btn-secondary">View Offers</a>
+    </div>
+
+    <div class="hero-trust-badges">
+      <div class="trust-item">
+        <strong>10k+</strong>
+        <span>Books Sold</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <strong>4.9/5</strong>
+        <span>Customer Rating</span>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-item">
+        <strong>Fast</strong>
+        <span>Pan-India Delivery</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. RIGHT COLUMN (Fade Auto Slider) -->
+ <!-- RIGHT COLUMN (Fade Auto Slider) -->
+<div class="hero-right-col">
+  <div class="hero-slider-wrapper" id="heroSliderWrapper">
+    <div class="hero-slider-track" id="heroSliderTrack">
+      <!-- Slide 1: SIRF ispe 'active' class hogi -->
+      <div class="hero-slide-item active">
+        <img src="images/9789371346603_EN.jpg" alt="The Attention Cure" onerror="this.src='https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=500';" />
+      </div>
+      <!-- Slide 2 -->
+      <div class="hero-slide-item active">
+        <img src="images/9789371346627_DE.jpg" alt="Die Überfliegerfalle" onerror="this.src='https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=500';" />
+      </div>
+      <!-- Slide 3 -->
+      <div class="hero-slide-item">
+        <img src="images/9789371347037_DE.jpg" alt="Keine Ruhe Mehr" onerror="this.src='https://images.unsplash.com/photo-1512820790803-83ca734da794?w=500';" />
+      </div>
+      <!-- Slide 4 -->
+      <div class="hero-slide-item">
+        <img src="images/9789371347037_DE.jpg" alt="Penser Clairement" onerror="this.src='https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500';" />
+      </div>
+      <!-- Slide 5 -->
+      <div class="hero-slide-item">
+        <img src="images/9789371347419_FR.jpg" alt="La Science du Rire" onerror="this.src='https://images.unsplash.com/photo-1532012164546-f432f2e3777f?w=500';" />
+      </div>
+      <!-- Slide 6 -->
+      <div class="hero-slide-item">
+        <img src="images/9789371349154_EN.jpg" alt="Restless No More" onerror="this.src='https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=500';" />
+      </div>
+      <!-- Slide 7 -->
+      <div class="hero-slide-item">
+        <img src="images/9789371349352_EN.jpg" alt="The Overachiever Trap" onerror="this.src='https://images.unsplash.com/photo-1495446815901-a7297e633e8d?w=500';" />
+      </div>
+      <!-- Slide 8 -->
+      <div class="hero-slide-item">
+        <img src="images/9789371349697_DE.jpg" alt="Brand You, Inc." onerror="this.src='https://images.unsplash.com/photo-1592496431122-2349e0fbc666?w=500';" />
+      </div>
+    </div>
+
+    <!-- Controls Wrapper (Arrows + Dots ek sath) -->
+    <div class="slider-bottom-controls">
+      <div class="slider-arrows-group">
+        <button class="slider-arrow-btn slider-arrow-prev" id="heroPrevBtn" type="button" aria-label="Previous Book">
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button class="slider-arrow-btn slider-arrow-next" id="heroNextBtn" type="button" aria-label="Next Book">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Dots under the arrows -->
+      <div class="slider-dots-container" id="heroSliderDots"></div>
+    </div>
+  </div>
+</div>
+</section>
+
+    <!-- 3. Feature Section -->
+<!-- ================= 1. FEATURED PRODUCTS SECTION ================= -->
+<section id="featured-products" class="products-section section-p1">
+    <div class="section-header-box">
+        <span class="section-tag-pill">
+            <i class="fa-solid fa-crown"></i> Handpicked Selection
+        </span>
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-subtitle">Summer Vacation New Modern Design & Bestselling Titles</p>
+    </div>
+
+  <!-- Dynamic cards yahan inject honge -->
+  <div class="pro-container" id="featuredProContainer">
+    <!-- JS se render hoga -->
+  </div>
+<!-- Products Grid khatam hone ke theek baad -->
+<div class="view-more-container">
+    <a href="gallery.html" class="btn-view-more">
+        <span>View More Books</span>
+        <i class="fa-solid fa-arrow-right"></i>
+    </a>
+</div>
+    </div>
+
+
+</section>
+
+
+<!-- ================= 5. DUAL PROMO BANNER SECTION ================= -->
+<!-- 2 Big Banners Section -->
+<!-- 2 Big Banners -->
+<section id="sm-banner" class="banner-container">
+    
+    <!-- 1. Left Banner: Buy 1 Get 1 Free -->
+    <a href="gallery.html?filter=sale" class="banner-box banner-box1">
+        <div class="banner-text-layer">
+            <h4>Crazy Deals</h4>
+            <h2>Buy 1 Get 1 Free</h2>
+            <span>The finest classic and modern mind-expanding books on sale at Mindful Pages.</span>
+            <span class="banner-btn">Learn More <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+    </a>
+
+    <!-- 2. Right Banner: Upcoming Season -->
+    <a href="gallery.html?filter=upcoming" class="banner-box banner-box2">
+        <div class="banner-text-layer">
+            <h4>Spring / Summer</h4>
+            <h2>Upcoming Season</h2>
+            <span>New psychological thrillers, business guides, and educational bundles.</span>
+            <span class="banner-btn">Collection <i class="fa-solid fa-arrow-right"></i></span>
+        </div>
+    </a>
+
+</section>
+
+<!-- 3 Small Banners (Clickable cards) -->
+<section id="banner3" class="section-p1 banner-container">
+    <a href="gallery.html?filter=sale" class="banner-small-box b-box1">
+        <h2>SEASONAL SALE</h2>
+        <h3>Winter Collection -50% OFF</h3>
+    </a>
+    <a href="gallery.html?filter=authors" class="banner-small-box b-box2">
+        <h2>NEW AUTHORS</h2>
+        <h3>Spring / Summer 2026</h3>
+    </a>
+    <a href="gallery.html?filter=workbooks" class="banner-small-box b-box3">
+        <h2>PRINTS &amp; WORKBOOKS</h2>
+        <h3>Hardcover &amp; Digital Guides</h3>
+    </a>
+</section>
+
+
+
+
+
+    <!-- 6. New Arrivals Section -->
+   <!-- 6. New Arrivals Section -->
+
+
+<!-- ================= 2. NEW ARRIVALS SECTION ================= -->
+<section id="new-arrivals" class="products-section section-p1">
+    <div class="section-header-box">
+        <span class="section-tag-pill">
+            <i class="fa-solid fa-sparkles"></i> Just Landed in Stock
+        </span>
+        <h2 class="section-title">Recent Arrivals</h2>
+        <p class="section-subtitle">History, Fiction & All modern categories fresh from our catalog</p>
+    </div>
+
+    <div class="pro-container">
+        <!-- New Arrival 1 -->
+        <div class="pro-card" data-id="2" data-category="business">
+    <div class="pro-img-box">
+        <!-- 1. Left Corner Discount Badge -->
+        <span class="pro-badge promo-badge">-20%</span>
+
+        <!-- 2. Top-Right Floating Wishlist Icon -->
+        <button type="button" class="btn-card-wishlist" aria-label="Add to Wishlist" data-id="2">
+            <i class="fa-regular fa-heart"></i>
+        </button>
+
+        <!-- Book Cover Image -->
+        <img src="images/f2.jpg" alt="Psychology of Money" onerror="this.src='https://images.unsplash.com/photo-1592496431122-2349e0fbc666?w=500';">
+
+        <!-- 3. Centered Quick View Hover Button -->
+        <a href="product-details.html?id=2" class="quick-view-btn">Quick View</a>
+    </div>
+
+    <div class="pro-details">
+        <span class="pro-author">Finance &amp; Mindset</span>
+        <h5 class="pro-title">Psychology of Money</h5>
+        <div class="pro-sku">SKU: 9789375365861</div>
+
+        <!-- 4. Rating Stars -->
+        <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        
+        <div class="pro-price-box">
+            <span class="orig-price">$81.25</span>
+            <span class="sale-price">$65.00</span>
+        </div>
+
+        <!-- 5. Interactive Action Buttons -->
+        <div class="card-action-btns">
+            <button type="button" class="btn-card-add-cart" data-id="2">
+                <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button type="button" class="btn-card-buy-now" data-id="2">Buy Now</button>
+        </div>
+    </div>
+</div>
+
+        <!-- New Arrival 2 -->
+       <div class="pro-card" data-id="2" data-category="business">
+    <div class="pro-img-box">
+        <!-- 1. Left Corner Discount Badge -->
+        <span class="pro-badge promo-badge">-20%</span>
+
+        <!-- 2. Top-Right Floating Wishlist Icon -->
+        <button type="button" class="btn-card-wishlist" aria-label="Add to Wishlist" data-id="2">
+            <i class="fa-regular fa-heart"></i>
+        </button>
+
+        <!-- Book Cover Image -->
+        <img src="images/f2.jpg" alt="Psychology of Money" onerror="this.src='https://images.unsplash.com/photo-1592496431122-2349e0fbc666?w=500';">
+
+        <!-- 3. Centered Quick View Hover Button -->
+        <a href="product-details.html?id=2" class="quick-view-btn">Quick View</a>
+    </div>
+
+    <div class="pro-details">
+        <span class="pro-author">Finance &amp; Mindset</span>
+        <h5 class="pro-title">Psychology of Money</h5>
+        <div class="pro-sku">SKU: 9789375365861</div>
+
+        <!-- 4. Rating Stars -->
+        <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        
+        <div class="pro-price-box">
+            <span class="orig-price">$81.25</span>
+            <span class="sale-price">$65.00</span>
+        </div>
+
+        <!-- 5. Interactive Action Buttons -->
+        <div class="card-action-btns">
+            <button type="button" class="btn-card-add-cart" data-id="2">
+                <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button type="button" class="btn-card-buy-now" data-id="2">Buy Now</button>
+        </div>
+    </div>
+</div>
+
+        <!-- New Arrival 3 -->
+        <div class="pro-card" data-id="2" data-category="business">
+    <div class="pro-img-box">
+        <!-- 1. Left Corner Discount Badge -->
+        <span class="pro-badge promo-badge">-20%</span>
+
+        <!-- 2. Top-Right Floating Wishlist Icon -->
+        <button type="button" class="btn-card-wishlist" aria-label="Add to Wishlist" data-id="2">
+            <i class="fa-regular fa-heart"></i>
+        </button>
+
+        <!-- Book Cover Image -->
+        <img src="images/f2.jpg" alt="Psychology of Money" onerror="this.src='https://images.unsplash.com/photo-1592496431122-2349e0fbc666?w=500';">
+
+        <!-- 3. Centered Quick View Hover Button -->
+        <a href="product-details.html?id=2" class="quick-view-btn">Quick View</a>
+    </div>
+
+    <div class="pro-details">
+        <span class="pro-author">Finance &amp; Mindset</span>
+        <h5 class="pro-title">Psychology of Money</h5>
+        <div class="pro-sku">SKU: 9789375365861</div>
+
+        <!-- 4. Rating Stars -->
+        <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        
+        <div class="pro-price-box">
+            <span class="orig-price">$81.25</span>
+            <span class="sale-price">$65.00</span>
+        </div>
+
+        <!-- 5. Interactive Action Buttons -->
+        <div class="card-action-btns">
+            <button type="button" class="btn-card-add-cart" data-id="2">
+                <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button type="button" class="btn-card-buy-now" data-id="2">Buy Now</button>
+        </div>
+    </div>
+</div>
+
+        <!-- New Arrival 4 -->
+        <div class="pro-card" data-id="2" data-category="business">
+    <div class="pro-img-box">
+        <!-- 1. Left Corner Discount Badge -->
+        <span class="pro-badge promo-badge">-20%</span>
+
+        <!-- 2. Top-Right Floating Wishlist Icon -->
+        <button type="button" class="btn-card-wishlist" aria-label="Add to Wishlist" data-id="2">
+            <i class="fa-regular fa-heart"></i>
+        </button>
+
+        <!-- Book Cover Image -->
+        <img src="images/f2.jpg" alt="Psychology of Money" onerror="this.src='https://images.unsplash.com/photo-1592496431122-2349e0fbc666?w=500';">
+
+        <!-- 3. Centered Quick View Hover Button -->
+        <a href="product-details.html?id=2" class="quick-view-btn">Quick View</a>
+    </div>
+
+    <div class="pro-details">
+        <span class="pro-author">Finance &amp; Mindset</span>
+        <h5 class="pro-title">Psychology of Money</h5>
+        <div class="pro-sku">SKU: 9789375365861</div>
+
+        <!-- 4. Rating Stars -->
+        <div class="star">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>
+        
+        <div class="pro-price-box">
+            <span class="orig-price">$81.25</span>
+            <span class="sale-price">$65.00</span>
+        </div>
+
+        <!-- 5. Interactive Action Buttons -->
+        <div class="card-action-btns">
+            <button type="button" class="btn-card-add-cart" data-id="2">
+                <i class="fa-solid fa-cart-plus"></i> Add to Cart
+            </button>
+            <button type="button" class="btn-card-buy-now" data-id="2">Buy Now</button>
+        </div>
+    </div>
+</div>
+
+<!-- Products Grid khatam hone ke theek baad -->
+<div class="view-more-container">
+    <a href="gallery.html" class="btn-view-more">
+        <span>View More Books</span>
+        <i class="fa-solid fa-arrow-right"></i>
+    </a>
+</div>
+    </div>
+
+
+
+
+</section>
+
+
+
+   <!-- 9. Newsletter Section -->
+<section id="newsletter" class="newsletter-section section-p1">
+    <div class="newsletter-card">
+        <div class="news-text-content">
+            <span class="news-tag">
+                <i class="fa-solid fa-envelope-open-text"></i> VIP Club
+            </span>
+            <h3 class="news-title">Sign Up For Newsletters</h3>
+            <p class="news-desc">
+                Get weekly curated book recommendations, author events & <span class="highlight">Special 70% Off</span> coupons directly in your inbox.
+            </p>
+        </div>
+
+        <form class="news-form-container" id="newsletterForm" novalidate>
+            <div class="news-input-box">
+                <i class="fa-regular fa-envelope news-input-icon"></i>
+                <input 
+                    type="email" 
+                    id="newsEmail" 
+                    placeholder="Enter your email address..." 
+                    autocomplete="email" 
+                    required 
+                />
+            </div>
+            <button type="submit" class="news-submit-btn" id="newsSubmitBtn">
+                <span class="btn-text">Subscribe</span>
+                <i class="fa-solid fa-arrow-right btn-icon"></i>
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- 10. Main Footer Section -->
+<footer id="footer2" class="main-footer section-p1">
+    <div class="footer-container">
+        <!-- Col 1: Brand & Socials -->
+        <div class="footer-col brand-col">
+            <a href="index.html" class="nav-brand footer-brand">
+                <span class="brand-text">Kovark</span>
+                <span class="brand-subtext">Grow Better, Together.</span>
+            </a>
+            <p class="brand-about">
+                Mindfull Pages by Kovark is your curated destination for verified original editions, modern bestsellers, and timeless literary collections.
+            </p>
+            <div class="footer-social-wrap">
+                <span class="social-label">Follow Us</span>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="X Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Col 2: Contact Information -->
+        <div class="footer-col contact-col">
+            <h4 class="col-heading">Contact Us</h4>
+            <ul class="contact-list">
+                <li>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>526 Wellington Road, Street 32, San Francisco, CA 94107</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+01 22222 365 / (+91) 01 2345 6789</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-clock"></i>
+                    <span>10:00 AM – 06:00 PM (Mon – Sat)</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>support@mindfullpages.com</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Col 3: Quick Links -->
+        <div class="footer-col links-col">
+            <h4 class="col-heading">Explore & Help</h4>
+            <ul class="footer-links">
+                <li><a href="#about">About Our Publishing</a></li>
+                <li><a href="#featured-products">Featured Collection</a></li>
+                <li><a href="#new-arrivals">New Arrivals</a></li>
+                <li><a href="#pricing">Membership & Pricing</a></li>
+                <li><a href="#">Delivery & Shipping Policy</a></li>
+                <li><a href="#">Privacy & Terms of Service</a></li>
+            </ul>
+        </div>
+
+        <!-- Col 4: App Downloads & Payments -->
+        <div class="footer-col install-col">
+            <h4 class="col-heading">Install App</h4>
+            <p class="app-sub">Download our mobile reading & audio reader apps</p>
+            
+            <div class="app-store-btns">
+                <a href="#" class="store-pill">
+                    <i class="fa-brands fa-google-play"></i>
+                    <div>
+                        <small>GET IT ON</small>
+                        <strong>Google Play</strong>
+                    </div>
+                </a>
+                <a href="#" class="store-pill">
+                    <i class="fa-brands fa-apple"></i>
+                    <div>
+                        <small>Download on the</small>
+                        <strong>App Store</strong>
+                    </div>
+                </a>
+            </div>
+
+            <span class="payment-label">100% Secured Payment Gateways</span>
+            <div class="payment-gateways">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-apple-pay"></i>
+                <i class="fa-brands fa-google-pay"></i>
+                <i class="fa-brands fa-cc-stripe"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom-bar">
+        <p class="copyright-text">
+            © 2026 <strong>Mindfull Pages</strong> • Kovark Publishers Inc. All rights reserved.
+        </p>
+        <div class="footer-legal-links">
+            <a href="#">Privacy Policy</a>
+            <span class="sep">•</span>
+            <a href="#">Terms & Conditions</a>
+            <span class="sep">•</span>
+            <a href="#">Security</a>
+            <span class="sep">•</span>
+            <a href="#">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+    <!-- JS Modular Controller & Logic -->
+  <script src="js/common.js"></script>
+  <script src="js/products.js"></script>
+  <script src="js/product-details.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/hero.js"></script>
+
+
+</body>
+
+</html>

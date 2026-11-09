@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Store | Book Store</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- CSS Folder se sabhi component styles linking -->
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/Hero.css">
+    <link rel="stylesheet" href="css/Features.css">
+    <link rel="stylesheet" href="css/NewArrivals.css">
+    <link rel="stylesheet" href="css/amenities.css">
+    <link rel="stylesheet" href="css/blog.css">
+    <link rel="stylesheet" href="css/Products.css">
+    <link rel="stylesheet" href="css/Banners.css">
+    <link rel="stylesheet" href="css/Footer.css">
+
+    
+</head>
+
+<body>
+ <!-- 1. Header Section -->
+   <section id="header">
+  <div class="floating-navbar-container">
+    <nav class="floating-navbar">
+      
+      <!-- Top Row: Logo, Menu, Action Buttons -->
+      <div class="nav-top-row">
+        <!-- Logo -->
+        <a href="index.html" class="nav-brand">
+          <i class="fa-solid fa-book-open brand-icon"></i>
+          <div>
+            <span class="brand-text">Mindful Pages</span>
+          </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-item active">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+          <li><a href="amenities.html" class="nav-item">Amenities</a></li>
+          <li><a href="publish.html" class="nav-item">Publish with Us</a></li>
+          <li><a href="blog.html" class="nav-item">Blog</a></li>
+        </ul>
+
+        <!-- Right Side Button Group -->
+        <div class="nav-btn-group">
+          <!-- Wishlist -->
+          <button type="button" class="btn-nav-icon nav-wishlist-icon" id="openWishlistBtn" aria-label="Wishlist">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+          
+          <!-- Cart with Purple Badge -->
+          <button type="button" class="btn-nav-icon" id="openCartBtn" aria-label="Cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge-count" id="navCartCount">8</span>
+          </button>
+
+          <!-- Login Capsule -->
+          <button class="btn-login" id="openLoginModal">Login</button>
+
+          <!-- Glowing Contact Button -->
+          <a href="#contact" class="btn-contact">Contact Now</a>
+        </div>
+      </div>
+
+      <!-- Center Floating Search Bar (Card ke andar bottom-centered) -->
+      <div class="home-search-box">
+        <input 
+          type="text" 
+          id="homeSearchInput" 
+          placeholder="What are you looking for?" 
+          autocomplete="off" 
+        />
+        <button type="button" id="homeSearchBtn" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+    </nav>
+  </div>
+</section>
+
+<!-- ================= BLOG MAIN CONTENT ================= -->
+<main class="blog-main-wrapper">
+    
+    <!-- Top Filter Bar & Search -->
+    <section class="blog-controls-bar">
+        <div class="blog-categories-scroll">
+            <button type="button" class="blog-cat-btn active" data-category="all">All Posts</button>
+            <button type="button" class="blog-cat-btn" data-category="tech">AI & Tech</button>
+            <button type="button" class="blog-cat-btn" data-category="business">Business</button>
+            <button type="button" class="blog-cat-btn" data-category="growth">Growth</button>
+            <button type="button" class="blog-cat-btn" data-category="design">Design</button>
+            <button type="button" class="blog-cat-btn" data-category="history">History</button>
+            <button type="button" class="blog-cat-btn" data-category="wellness">Mindfulness</button>
+        </div>
+
+        <div class="blog-search-box">
+            <input type="text" id="blogSearchInput" placeholder="Search blog articles..." autocomplete="off">
+            <button type="button" id="blogSearchBtn" aria-label="Search Articles">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Section Heading -->
+    <div class="blog-section-header">
+        <h1 class="blog-main-title" id="activeCategoryHeading">All Posts</h1>
+        <span class="blog-post-counter" id="postCountBadge">Showing articles</span>
+    </div>
+
+    <!-- Posts Feed Container -->
+    <div class="blog-feed-container" id="blogFeedContainer">
+        <!-- JS dynamically renders posts here -->
+    </div>
+
+    <!-- No Results Placeholder -->
+    <div class="blog-no-results" id="blogNoResults" style="display: none;">
+        <i class="fa-regular fa-newspaper"></i>
+        <h3>No articles found</h3>
+        <p>Aapke search query se milta-julta koi article nahi mila. Dusra keyword type karein.</p>
+    </div>
+
+</main>
+
+<!-- Full Article Quick View Modal -->
+<div class="blog-modal-backdrop" id="blogModalBackdrop">
+    <div class="blog-modal-content">
+        <button type="button" class="blog-modal-close" id="blogModalClose">&times;</button>
+        <span class="modal-tag" id="modalPostTag">Category</span>
+        <h2 class="modal-title" id="modalPostTitle">Title</h2>
+        <div class="modal-meta" id="modalPostMeta">Author • Date • Read time</div>
+        <div class="modal-img-wrap" id="modalImgWrap">
+            <img id="modalPostImg" src="" alt="Blog Cover">
+        </div>
+        <div class="modal-body-text" id="modalPostContent">
+            Full story text goes here...
+        </div>
+    </div>
+</div>
+
+
+<!-- 10. Main Footer Section -->
+<footer id="footer2" class="main-footer section-p1">
+    <div class="footer-container">
+        <!-- Col 1: Brand & Socials -->
+        <div class="footer-col brand-col">
+            <a href="index.html" class="nav-brand footer-brand">
+                <span class="brand-text">Kovark</span>
+                <span class="brand-subtext">Grow Better, Together.</span>
+            </a>
+            <p class="brand-about">
+                Mindfull Pages by Kovark is your curated destination for verified original editions, modern bestsellers, and timeless literary collections.
+            </p>
+            <div class="footer-social-wrap">
+                <span class="social-label">Follow Us</span>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="X Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Col 2: Contact Information -->
+        <div class="footer-col contact-col">
+            <h4 class="col-heading">Contact Us</h4>
+            <ul class="contact-list">
+                <li>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>526 Wellington Road, Street 32, San Francisco, CA 94107</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+01 22222 365 / (+91) 01 2345 6789</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-clock"></i>
+                    <span>10:00 AM – 06:00 PM (Mon – Sat)</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>support@mindfullpages.com</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Col 3: Quick Links -->
+        <div class="footer-col links-col">
+            <h4 class="col-heading">Explore & Help</h4>
+            <ul class="footer-links">
+                <li><a href="#about">About Our Publishing</a></li>
+                <li><a href="#featured-products">Featured Collection</a></li>
+                <li><a href="#new-arrivals">New Arrivals</a></li>
+                <li><a href="#pricing">Membership & Pricing</a></li>
+                <li><a href="#">Delivery & Shipping Policy</a></li>
+                <li><a href="#">Privacy & Terms of Service</a></li>
+            </ul>
+        </div>
+
+        <!-- Col 4: App Downloads & Payments -->
+        <div class="footer-col install-col">
+            <h4 class="col-heading">Install App</h4>
+            <p class="app-sub">Download our mobile reading & audio reader apps</p>
+            
+            <div class="app-store-btns">
+                <a href="#" class="store-pill">
+                    <i class="fa-brands fa-google-play"></i>
+                    <div>
+                        <small>GET IT ON</small>
+                        <strong>Google Play</strong>
+                    </div>
+                </a>
+                <a href="#" class="store-pill">
+                    <i class="fa-brands fa-apple"></i>
+                    <div>
+                        <small>Download on the</small>
+                        <strong>App Store</strong>
+                    </div>
+                </a>
+            </div>
+
+            <span class="payment-label">100% Secured Payment Gateways</span>
+            <div class="payment-gateways">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-apple-pay"></i>
+                <i class="fa-brands fa-google-pay"></i>
+                <i class="fa-brands fa-cc-stripe"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom-bar">
+        <p class="copyright-text">
+            © 2026 <strong>Mindfull Pages</strong> • Kovark Publishers Inc. All rights reserved.
+        </p>
+        <div class="footer-legal-links">
+            <a href="#">Privacy Policy</a>
+            <span class="sep">•</span>
+            <a href="#">Terms & Conditions</a>
+            <span class="sep">•</span>
+            <a href="#">Security</a>
+            <span class="sep">•</span>
+            <a href="#">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+    <!-- JS Modular Controller & Logic -->
+       <script src="js/blog.js"></script>
+  <script src="js/common.js"></script>
+    <script src="js/home.js"></script>
+    <script src="js/hero.js"></script>
+
+    
+</body>
+
+</html>

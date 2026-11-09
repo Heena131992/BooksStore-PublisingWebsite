@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Mindful Pages Publishers</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+    <!-- Google Fonts: League Spartan -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&display=swap" />
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/about.css" />
+    <link rel="stylesheet" href="css/Footer.css" />
+</head>
+<body>
+
+     <!-- 1. Header Section -->
+   <section id="header">
+  <div class="floating-navbar-container">
+    <nav class="floating-navbar">
+      
+      <!-- Top Row: Logo, Menu, Action Buttons -->
+      <div class="nav-top-row">
+        <!-- Logo -->
+        <a href="index.html" class="nav-brand">
+          <i class="fa-solid fa-book-open brand-icon"></i>
+          <div>
+            <span class="brand-text">Mindful Pages</span>
+          </div>
+        </a>
+
+        <!-- Navigation Links -->
+        <ul class="nav-menu">
+          <li><a href="index.html" class="nav-item active">Home</a></li>
+          <li><a href="about.html" class="nav-item">About</a></li>
+          <li><a href="gallery.html" class="nav-item">Gallery</a></li>
+          <li><a href="amenities.html" class="nav-item">Amenities</a></li>
+          <li><a href="publish.html" class="nav-item">Publish with Us</a></li>
+          <li><a href="blog.html" class="nav-item">Blog</a></li>
+        </ul>
+
+        <!-- Right Side Button Group -->
+        <div class="nav-btn-group">
+          <!-- Wishlist -->
+          <button type="button" class="btn-nav-icon nav-wishlist-icon" id="openWishlistBtn" aria-label="Wishlist">
+            <i class="fa-regular fa-heart"></i>
+                <span class="cart-badge-count" id="navWishlistCount">0</span>
+          </button>
+
+          <!-- Cart with Purple Badge -->
+          <button type="button" class="btn-nav-icon" id="openCartBtn" aria-label="Cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span class="cart-badge-count" id="navCartCount">8</span>
+          </button>
+
+          <!-- Login Capsule -->
+          <button class="btn-login" id="openLoginModal">Login</button>
+
+          <!-- Glowing Contact Button -->
+          <a href="#contact" class="btn-contact">Contact Now</a>
+        </div>
+      </div>
+
+      <!-- Center Floating Search Bar (Card ke andar bottom-centered) -->
+      <div class="home-search-box">
+        <input 
+          type="text" 
+          id="homeSearchInput" 
+          placeholder="What are you looking for?" 
+          autocomplete="off" 
+        />
+        <button type="button" id="homeSearchBtn" aria-label="Search">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+      </div>
+
+    </nav>
+  </div>
+</section>
+
+    <!-- ================= 2. ABOUT US SECTION ================= -->
+    <main class="about-page-wrapper section-p1">
+        
+        <!-- Top Section Header -->
+        <div class="about-page-header">
+            <h1 class="about-brand-heading">Mindful Pages Publishers</h1>
+        </div>
+
+        <!-- Overlapping Frame & Photo Container -->
+        <div class="about-overlap-container">
+            
+            <!-- Background Right Offset Image (Bookshelf & Green Leaf) -->
+            <div class="about-bg-photo">
+                <img src="images/Bookcover.avif" alt="Mindful Reading Space" onerror="this.src='https://images.unsplash.com/photo-1507842229452-7b3b64f9b883?auto=format&fit=crop&w=1200&q=80';" />
+            </div>
+
+            <!-- Foreground Overlapping Framed Document -->
+            <article class="about-framed-card">
+                <div class="card-inner-content">
+                    
+                    <h2 class="article-title">
+                        Welcome to Mindful Pages Publishers: Illuminating Minds, Nurturing Souls
+                    </h2>
+
+                    <p class="article-para">
+                        At Mindful Pages, we're not just a publisher; we're a sanctuary for readers and authors who share a passion for enriching lives through the power of words. Established with the vision to illuminate minds and nurture souls, our publishing house specializes in a curated collection of books that span the realms of spiritualism, self-help, mindfulness, and enchanting children's stories. Each book is a beacon, guiding readers on their personal and spiritual journeys and offering equal solace, inspiration, and joy.
+                    </p>
+
+                    <section class="about-block">
+                        <h3 class="block-title">Our Mission</h3>
+                        <p class="article-para">
+                            To publish books that matter. Mindful Pages seeks to be a source of tranquility and wisdom in an age where the world moves fast. We believe in the transformative power of literature — how a single book can change a life, heal a soul, or spark an everlasting love for reading. Our mission is to create titles that resonate with our readers' deepest selves, encouraging growth, healing, and happiness.
+                        </p>
+                    </section>
+
+                    <section class="about-block">
+                        <h3 class="block-title">Global Reach, Personal Touch</h3>
+                        <p class="article-para">
+                            Mindful Pages has embraced the digital revolution, ensuring our titles are accessible worldwide in print and ebook formats. We take pride in our global distribution network, which brings our books into the hands of readers across continents, transcending borders and cultures. Yet, despite our broad reach, we maintain a personal touch. Every author we work with becomes part of our Mindful Pages family, and every book is a labor of love, meticulously crafted and thoughtfully promoted.
+                        </p>
+                    </section>
+
+                    <section class="about-block">
+                        <h3 class="block-title">Our Collection</h3>
+                        <p class="article-para">
+                            From the serene wisdom of ancient spiritual practices to modern guides on living a balanced life, our collection is diverse yet unified in its purpose. Our self-help books provide practical tools for personal development, while our mindfulness guides offer pathways to inner peace. For our younger readers, we offer a treasury of children's stories that entertain and teach valuable life lessons about kindness, bravery, and curiosity.
+                        </p>
+                    </section>
+
+                    <p class="article-closing">
+                        <em>Let's turn the page to a brighter, more mindful world together.</em>
+                    </p>
+
+                </div>
+            </article>
+
+        </div>
+
+    </main>
+
+    
+   <!-- 9. Newsletter Section -->
+<section id="newsletter" class="newsletter-section section-p1">
+    <div class="newsletter-card">
+        <div class="news-text-content">
+            <span class="news-tag">
+                <i class="fa-solid fa-envelope-open-text"></i> VIP Club
+            </span>
+            <h3 class="news-title">Sign Up For Newsletters</h3>
+            <p class="news-desc">
+                Get weekly curated book recommendations, author events & <span class="highlight">Special 70% Off</span> coupons directly in your inbox.
+            </p>
+        </div>
+
+        <form class="news-form-container" id="newsletterForm" novalidate>
+            <div class="news-input-box">
+                <i class="fa-regular fa-envelope news-input-icon"></i>
+                <input 
+                    type="email" 
+                    id="newsEmail" 
+                    placeholder="Enter your email address..." 
+                    autocomplete="email" 
+                    required 
+                />
+            </div>
+            <button type="submit" class="news-submit-btn" id="newsSubmitBtn">
+                <span class="btn-text">Subscribe</span>
+                <i class="fa-solid fa-arrow-right btn-icon"></i>
+            </button>
+        </form>
+    </div>
+</section>
+
+<!-- 10. Main Footer Section -->
+<footer id="footer2" class="main-footer section-p1">
+    <div class="footer-container">
+        <!-- Col 1: Brand & Socials -->
+        <div class="footer-col brand-col">
+            <a href="index.html" class="nav-brand footer-brand">
+                <span class="brand-text">Kovark</span>
+                <span class="brand-subtext">Grow Better, Together.</span>
+            </a>
+            <p class="brand-about">
+                Mindfull Pages by Kovark is your curated destination for verified original editions, modern bestsellers, and timeless literary collections.
+            </p>
+            <div class="footer-social-wrap">
+                <span class="social-label">Follow Us</span>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" aria-label="X Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Col 2: Contact Information -->
+        <div class="footer-col contact-col">
+            <h4 class="col-heading">Contact Us</h4>
+            <ul class="contact-list">
+                <li>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>526 Wellington Road, Street 32, San Francisco, CA 94107</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+01 22222 365 / (+91) 01 2345 6789</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-clock"></i>
+                    <span>10:00 AM – 06:00 PM (Mon – Sat)</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>support@mindfullpages.com</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Col 3: Quick Links -->
+        <div class="footer-col links-col">
+            <h4 class="col-heading">Explore & Help</h4>
+            <ul class="footer-links">
+                <li><a href="#about">About Our Publishing</a></li>
+                <li><a href="#featured-products">Featured Collection</a></li>
+                <li><a href="#new-arrivals">New Arrivals</a></li>
+                <li><a href="#pricing">Membership & Pricing</a></li>
+                <li><a href="#">Delivery & Shipping Policy</a></li>
+                <li><a href="#">Privacy & Terms of Service</a></li>
+            </ul>
+        </div>
+
+        <!-- Col 4: App Downloads & Payments -->
+        <div class="footer-col install-col">
+            <h4 class="col-heading">Install App</h4>
+            <p class="app-sub">Download our mobile reading & audio reader apps</p>
+            
+            <div class="app-store-btns">
+                <a href="#" class="store-pill">
+                    <i class="fa-brands fa-google-play"></i>
+                    <div>
+                        <small>GET IT ON</small>
+                        <strong>Google Play</strong>
+                    </div>
+                </a>
+                <a href="#" class="store-pill">
+                    <i class="fa-brands fa-apple"></i>
+                    <div>
+                        <small>Download on the</small>
+                        <strong>App Store</strong>
+                    </div>
+                </a>
+            </div>
+
+            <span class="payment-label">100% Secured Payment Gateways</span>
+            <div class="payment-gateways">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-cc-apple-pay"></i>
+                <i class="fa-brands fa-google-pay"></i>
+                <i class="fa-brands fa-cc-stripe"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Copyright Bar -->
+    <div class="footer-bottom-bar">
+        <p class="copyright-text">
+            © 2026 <strong>Mindfull Pages</strong> • Kovark Publishers Inc. All rights reserved.
+        </p>
+        <div class="footer-legal-links">
+            <a href="#">Privacy Policy</a>
+            <span class="sep">•</span>
+            <a href="#">Terms & Conditions</a>
+            <span class="sep">•</span>
+            <a href="#">Security</a>
+            <span class="sep">•</span>
+            <a href="#">Sitemap</a>
+        </div>
+    </div>
+</footer>
+
+    <!-- JS Modular Controller & Logic -->
+   <script src="js/common.js"></script>
+
+   
+</body>
+
+</html>

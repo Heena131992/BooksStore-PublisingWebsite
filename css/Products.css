@@ -1,0 +1,557 @@
+/* ================= PRODUCT SECTIONS (FEATURED & NEW ARRIVALS) ================= */
+.products-section {
+    width: 100%;
+    max-width: 1300px;
+    margin: auto;
+    padding: 20px 40px 50px 40px;
+    box-sizing: border-box;
+}
+
+/* Header Text */
+.section-header-box {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.section-tag-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background-color: #f5f3ff;
+    color: #7c3aed;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 30px;
+    border: 1px solid #ddd6fe;
+    margin-bottom: 12px;
+}
+
+.section-title {
+    font-size: 38px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.5px;
+}
+
+.section-subtitle {
+    font-size: 20px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* ================= HOME BOOK CARDS INTERACTIVE STYLES ================= */
+.pro-card {
+    position: relative;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 12px;
+    border: 1px solid #f1f5f9;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.pro-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(16, 42, 67, 0.08);
+}
+
+.pro-img-box {
+    position: relative;
+    width: 100%;
+    max-width: 220px;
+    height: 260px;
+    background: #f8fafc;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pro-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.pro-card:hover .pro-img-box img {
+    transform: scale(1.04);
+    filter: brightness(0.92);
+}
+
+/* 1. TOP-RIGHT FLOATING WISHLIST HEART BUTTON */
+.btn-card-wishlist {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 34px;
+    height: 34px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(226, 232, 240, 0.8);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 8;
+    color: #475569;
+    font-size: 15px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+}
+
+.btn-card-wishlist:hover {
+    transform: scale(1.12);
+    color: #ef4444;
+}
+
+/* Active Wishlisted State */
+.btn-card-wishlist.active {
+    background: #fee2e2;
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.btn-card-wishlist.active i {
+    font-weight: 900;
+}
+
+/* Card Container */
+.pro-card {
+  position: relative;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+/* Book Cover Box */
+.pro-img-box {
+  position: relative;
+  width: 100%;
+  height: 310px;
+  overflow: hidden; /* Button ko bottom ke bahar hide rakhega */
+  background: #0b021a;
+  border-radius: 4px;
+}
+
+.pro-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.pro-card:hover .pro-img-box img {
+  transform: scale(1.03);
+}
+
+/* =========================================================
+   QUICK VIEW OVERLAY STRIP (Image jaisa exact grey block)
+   ========================================================= */
+.quick-view-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75px; /* Cover ke bottom ~30% hisse ko cover karega */
+  
+  /* Image jaisa soft light-grey semi-transparent look */
+  background: rgba(209, 213, 219, 0.92);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  
+  /* Text typography */
+  color: #111827;
+  font-size: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  
+  /* Centering */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  border: none;
+  border-radius: 0;
+  z-index: 10;
+  cursor: pointer;
+
+  /* DEFAULT: Frame ke bilkul niche hide rahega */
+  transform: translateY(100%);
+  opacity: 0;
+  visibility: hidden;
+
+  /* Smooth bottom-to-top slide transition */
+  transition: transform 0.35s cubic-bezier(0.25, 1, 0.5, 1),
+              opacity 0.25s ease,
+              background-color 0.2s ease,
+              color 0.2s ease;
+}
+
+/* Hover par niche se upar slide ho */
+.pro-card:hover .quick-view-btn,
+.pro-img-box:hover .quick-view-btn {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Button par hover effect */
+.quick-view-btn:hover {
+  background: rgba(186, 194, 206, 0.98);
+  color: #000000;
+}
+
+/* =========================================================
+   TITLE & BLUE ACCENT UNDERLINE (Image ke theek niche wala)
+   ========================================================= */
+.book-title-wrap {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-title-wrap .book-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.book-title-wrap .book-title a {
+  color: #1e3a5f; /* Deep navy blue title */
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.book-title-wrap .book-title a:hover {
+  color: #2563eb;
+}
+
+/* Title ke niche ki small blue underline */
+.book-title-wrap::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2.5px;
+  background-color: #1e3a5f;
+  margin-top: 6px;
+  border-radius: 2px;
+}
+/* 3. DETAILS & ACTIONS */
+.pro-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pro-author {
+    font-size: 13px;
+    color: #94a3b8;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.pro-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #102a43;
+    margin: 0 0 8px 0;
+    line-height: 1.3;
+}
+
+.pro-price-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.orig-price {
+    font-size: 14px;
+    color: #94a3b8;
+    text-decoration: line-through;
+}
+
+.sale-price {
+    font-size: 16px;
+    font-weight: 700;
+    color: #102a43;
+}
+
+.card-action-btns {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.btn-card-add-cart {
+    width: 100%;
+    padding: 8px 0;
+    background: #102a43;
+    color: #ffffff;
+    border: 1px solid #102a43;
+    border-radius: 4px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-card-add-cart:hover {
+    background: #1e3a5f;
+}
+
+.btn-card-buy-now {
+    width: 100%;
+    padding: 7px 0;
+    background: #ffffff;
+    color: #7c3aed;
+    border: 1.5px solid #7c3aed;
+    border-radius: 4px;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-card-buy-now:hover {
+    background: #7c3aed;
+    color: #ffffff;
+}
+
+/* 4-Column Responsive Grid */
+.pro-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Card Styling */
+.pro {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    box-sizing: border-box;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.pro:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 32px rgba(124, 58, 237, 0.12);
+    border-color: #cbd5e1;
+}
+
+/* Badges on Top-Left Corner */
+.pro-badge {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 20px;
+    z-index: 3;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.new-badge {
+    background: #7c3aed;
+    color: #ffffff;
+}
+
+.promo-badge {
+    background: #ef4444;
+    color: #ffffff;
+}
+
+.best-badge {
+    background: #ea580c;
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   IMAGE BOX & HOVER ZOOM TRANSITIONS
+   ========================================================================== */
+.pro-img-box {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  overflow: hidden; /* Bahar zoom hone se rokne ke liye */
+  cursor: pointer;
+}
+
+/* Book Cover Base State */
+.pro-img-box img {
+  max-width: 80%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 16px rgba(0, 0, 0, 0.35));
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+  will-change: transform;
+}
+
+/* Card par hover karne se subtle 3D lift */
+.pro-card:hover .pro-img-box img {
+  transform: scale(1.08) translateY(-4px);
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.45));
+}
+
+/* Book par click (active state) ripple / click bounce */
+.pro-img-box:active img {
+  transform: scale(0.96);
+  transition: transform 0.1s ease;
+}
+
+/* ==========================================================================
+   QUICK VIEW BUTTON ZOOM-IN TRANSITION
+   ========================================================================== */
+.quick-view-btn {
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  /* Shuruwat me chhota aur transparent rahega (scale 0.7) */
+  transform: translateX(-50%) scale(0.7);
+  background: rgba(15, 7, 32, 0.88);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 7px 16px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  /* Smooth bouncy zoom-in transition */
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 10;
+  white-space: nowrap;
+}
+
+/* Card hover par Quick View ka Zoom In effect */
+.pro-card:hover .quick-view-btn {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) scale(1);
+}
+
+.quick-view-btn:hover {
+  background: linear-gradient(90deg, #4f46e5 0%, #9333ea 100%);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 16px rgba(147, 51, 234, 0.6);
+  transform: translateX(-50%) scale(1.06);
+}
+
+/* ==========================================================================
+   IMAGE FULLSCREEN ZOOM OVERLAY (CLICK EFFECT)
+   ========================================================================== */
+.book-zoom-lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(8, 4, 18, 0.88);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+  cursor: zoom-out;
+}
+
+.book-zoom-lightbox.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Lightbox zoomed image popup */
+.book-zoom-lightbox img {
+  max-width: 90%;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(168, 85, 247, 0.3);
+  transform: scale(0.65);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.book-zoom-lightbox.active img {
+  transform: scale(1); /* Poora zoom-in effect */
+}
+
+/* Close Icon */
+.book-zoom-close {
+  position: absolute;
+  top: 24px;
+  right: 28px;
+  color: #ffffff;
+  font-size: 2rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.book-zoom-close:hover {
+  color: #f43f5e;
+  transform: scale(1.2);
+}
+
+/* Responsive Grid */
+@media (max-width: 1024px) {
+    .pro-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .products-section {
+        padding: 20px 20px 40px 20px;
+    }
+
+    .pro-container {
+        grid-template-columns: 1fr;
+    }
+
+    .pro-img-box {
+        height: 270px;
+    }
+}

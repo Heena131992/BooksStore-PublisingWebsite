@@ -1,0 +1,660 @@
+/* Container ko screen ke center me lana (Dono taraf equal gap) */
+.banner-container {
+    width: 90% !important;
+    max-width: 1180px !important; /* Cards ke barabar */
+    margin: 40px auto !important;
+    padding: 0 !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    gap: 25px !important;
+    box-sizing: border-box !important;
+}
+
+/* Base Banner Box (Ab yeh ek full clickable link hai) */
+.banner-box {
+    flex: 1 1 calc(50% - 13px) !important;
+    min-height: 330px !important;
+    border-radius: 18px !important;
+    text-decoration: none !important;
+    position: relative !important;
+    overflow: hidden !important;
+    display: flex !important;
+    align-items: center !important;
+    cursor: pointer !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+    transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.banner-box:hover {
+    transform: translateY(-4px) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Left Card: Dark Slate Background */
+.banner-box1 {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%) !important;
+}
+
+/* Right Card: Image + Dark Filter */
+.banner-box2 {
+    background: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.65)),
+                url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900') center/cover no-repeat !important;
+}
+
+/* Text aur Button ki Layer */
+.banner-text-layer {
+    padding: 35px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    z-index: 5 !important;
+}
+
+.banner-text-layer h4 {
+    font-size: 15px !important;
+    color: #cbd5e1 !important;
+    margin: 0 0 8px 0 !important;
+    letter-spacing: 0.5px !important;
+    font-weight: 500 !important;
+}
+
+.banner-text-layer h2 {
+    font-size: 30px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    margin: 0 0 12px 0 !important;
+    line-height: 1.25 !important;
+}
+
+.banner-text-layer span {
+    font-size: 15px !important;
+    color: #e2e8f0 !important;
+    line-height: 1.5 !important;
+    max-width: 85% !important;
+    margin-bottom: 22px !important;
+}
+
+/* Button Appearance */
+.banner-text-layer .banner-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    background: transparent !important;
+    color: #ffffff !important;
+    border: 1.5px solid #ffffff !important;
+    padding: 9px 22px !important;
+    font-size: 14.5px !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    margin-bottom: 0 !important;
+    transition: all 0.25s ease !important;
+}
+
+.banner-box:hover .banner-btn {
+    background: #ffffff !important;
+    color: #0f172a !important;
+}
+
+/* Mobile Screen */
+@media (max-width: 850px) {
+    .banner-container {
+        flex-direction: column !important;
+    }
+}
+
+.banner-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Banner 1: Balanced Dark Modern Slate Gradient */
+.banner-box1 {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+}
+
+/* Banner 2: Styled Image Background with Dark Overlay */
+.banner-box2 {
+    background: linear-gradient(rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.65)),
+                url('https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900') center/cover no-repeat;
+}
+
+.banner-box h4 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #cbd5e1;
+    margin: 0 0 10px 0;
+    letter-spacing: 0.5px;
+}
+
+.banner-box h2 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.25;
+    margin: 0 0 14px 0;
+}
+
+.banner-box span {
+    font-size: 16px;
+    color: #e2e8f0;
+    line-height: 1.5;
+    max-width: 80%;
+    margin-bottom: 24px;
+}
+
+/* Clear, High-Contrast Banner Buttons */
+.banner-btn {
+    background: transparent;
+    color: #ffffff;
+    border: 1.5px solid #ffffff;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+}
+
+.banner-btn:hover {
+    background: #ffffff;
+    color: #0f172a;
+}
+
+/* ================= 2. THREE SMALL BANNERS (#banner3) ================= */
+#banner3 {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 10px;
+}
+
+.banner-small-box {
+    flex: 1 1 calc(33.333% - 14px);
+    height: 190px;
+    border-radius: 14px;
+    padding: 24px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.banner-small-box:hover {
+    transform: translateY(-4px);
+}
+
+.b-box1 {
+    background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.7)),
+                url('https://images.unsplash.com/photo-1512820790803-83ca734da794?w=600') center/cover no-repeat;
+}
+
+.b-box2 {
+    background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.7)),
+                url('https://images.unsplash.com/photo-1497633762265-9d179a990aa6?w=600') center/cover no-repeat;
+}
+
+.b-box3 {
+    background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.7)),
+                url('https://images.unsplash.com/photo-1457369804613-52c61a468e7d?w=600') center/cover no-repeat;
+}
+
+.banner-small-box h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+    letter-spacing: 0.5px;
+}
+
+.banner-small-box h3 {
+    font-size: 14px;
+    font-weight: 500;
+    color: #f97316; /* Warm Orange Accent */
+    margin: 0;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+    .banner-box {
+        flex: 1 1 100%;
+        min-height: 280px;
+    }
+
+    .banner-small-box {
+        flex: 1 1 100%;
+        height: 160px;
+    }
+}
+
+/* Banner button anchor style */
+.banner-btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: #ffffff;
+    border: 1.5px solid #ffffff;
+    padding: 10px 22px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.banner-btn:hover {
+    background: #ffffff;
+    color: #0f172a;
+    transform: translateY(-2px);
+}
+
+/* 3 Small banner cards as links */
+#banner3 .banner-small-box {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   HERO 50-50 SPLIT SECTION & FADE AUTO-SLIDER (css/home.css)
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ==========================================================================
+   HERO CONTAINER (SPLIT GRID)
+   ========================================================================== */
+#hero.hero-split-container {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 40px 32px 80px 32px;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* ==========================================================================
+   LEFT COLUMN: CONTENT & TYPOGRAPHY
+   ========================================================================== */
+.hero-left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  z-index: 2;
+  margin-top: 60px;
+}
+
+/* Badge Pill */
+.hero-tag-pill {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #d8b4fe;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  margin-bottom: 24px;
+}
+
+/* Headings */
+.hero-main-title {
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+  color: #ffffff;
+  margin: 0 0 20px 0;
+}
+
+/* Gradient Text Fix */
+.hero-main-title .gradient-text,
+.gradient-text {
+  /* 1. Linear Gradient Background */
+  background: linear-gradient(90deg, #f43f5e 0%, #fb923c 100%) !important;
+
+  /* 2. Text Clip (Standard aur Webkit dono lagana zaroori hai) */
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+
+  /* 3. Text Fill transparent hona chahiye taaki peeche ka gradient dikhe */
+  -webkit-text-fill-color: transparent !important;
+  color: transparent !important;
+
+  /* 4. Display inline-block hona zaroori hai taaki clipping fail na ho */
+  display: inline-block !important;
+  width: auto !important;
+  height: auto !important;
+}
+
+/* Paragraph Subtext */
+.hero-para {
+  font-size: 1.2rem;
+  line-height: 1.65;
+  color: #a39bb8;
+  max-width: 680px;
+  margin: 0 0 34px 0;
+}
+
+/* CTA Group */
+.hero-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-bottom: 52px;
+}
+
+/* Primary Button with Purple/Cyan Glow */
+.hero-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, #4f46e5 0%, #9333ea 100%);
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 13px 26px;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 22px rgba(147, 51, 234, 0.55);
+  transition: all 0.25s ease;
+}
+
+.hero-btn-primary:hover {
+  box-shadow: 0 0 32px rgba(147, 51, 234, 0.85);
+  transform: translateY(-2px);
+}
+
+.hero-btn-primary i {
+  font-size: 1.5rem;
+  transition: transform 0.2s ease;
+}
+
+.hero-btn-primary:hover i {
+  transform: translateX(3px);
+}
+
+/* Secondary Button */
+.hero-btn-secondary {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.hero-btn-secondary:hover {
+  opacity: 0.8;
+}
+
+/* ==========================================================================
+   TRUST BADGES & NEON UNDERLINES
+   ========================================================================== */
+.hero-trust-badges {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.trust-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-bottom: 12px;
+}
+
+.trust-item strong {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.trust-item span {
+  font-size: 0.8rem;
+  color: #a39bb8;
+  margin-top: 4px;
+}
+
+/* Gradient Neon Underline bars */
+.trust-item::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.trust-item:nth-child(1)::after {
+  background: linear-gradient(90deg, #ec4899 0%, transparent 80%);
+}
+
+.trust-item:nth-child(3)::after {
+  background: linear-gradient(90deg, #fb923c 0%, transparent 80%);
+}
+
+.trust-item:nth-child(5)::after {
+  background: linear-gradient(90deg, #a855f7 0%, transparent 80%);
+}
+
+.trust-divider {
+  display: none; /* Reference me clean space aur direct underline hai */
+}
+
+/* ==========================================================================
+   RIGHT COLUMN: 3D BOOK STACK SLIDER
+   ========================================================================== */
+   
+.hero-right-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Slider Wrapper fix */
+.hero-slider-wrapper {
+  position: relative !important;
+  width: 100% !important;
+  max-width: 440px !important;
+  height: 580px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+}
+
+/* Arrow Buttons Group (Center Aligned) */
+.slider-arrows-group {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 12px !important;
+  margin: 0 auto !important; /* Horizontal center lock */
+}
+
+/* 1. Track par horizontal translate bilkul band */
+#heroSliderTrack,
+.hero-slider-track {
+  position: relative !important;
+  width: 100% !important;
+  height: 400px !important;
+  transform: none !important; /* Koi translation nahi hogi */
+  display: block !important;
+}
+
+/* 2. Har ek slide ek ke upar ek lock */
+.hero-slide-item {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  margin: auto !important;
+  
+  /* Inactive states */
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  
+  /* Sirf opacity fade hogi, position move nahi hogi */
+  transition: opacity 0.6s ease-in-out !important;
+  transform: perspective(1000px) rotateX(10deg) rotateY(-18deg) rotateZ(3deg) !important;
+}
+
+/* 3. Active slide sirf yahi par dikhegi */
+.hero-slide-item.active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  z-index: 5 !important;
+}
+
+/* 4. Book image container limit */
+.hero-slide-item img {
+  width: auto !important;
+  max-width: 90% !important;
+  max-height: 460px !important;
+  display: block !important;
+  margin: 0 auto !important;
+  object-fit: contain !important;
+}
+/* ==========================================================================
+   SLIDER ARROWS & DOTS CONTROLS
+   ========================================================================== */
+.slider-arrow-btn {
+  position: absolute;
+  bottom: 25px;
+  width: 54px;
+  height: 54px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.2s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.slider-arrow-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.35);
+  transform: translateY(-2px);
+}
+
+/* Reference image placement: Left & Right arrows grouped together */
+.slider-arrow-prev {
+  right: 400px;
+}
+
+.slider-arrow-next {
+  right: 0px;
+}
+/* Controls Wrapper */
+.slider-bottom-controls {
+  width: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important; /* Arrows aur dots ko image ke theek center mein layega */
+  justify-content: center !important;
+  margin-top: 18px !important;
+  padding: 0 !important;
+  gap: 12px !important;
+}
+
+/* Navigation Dots */
+.slider-dots-container {
+  position: absolute;
+  bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin: 0 auto
+  
+}
+
+.slider-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.slider-dot.active {
+  width: 20px;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 992px) {
+  #hero.hero-split-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding-top: 140px;
+  }
+
+  .hero-left-col {
+    align-items: center;
+  }
+
+  .hero-main-title {
+    font-size: 2.8rem;
+  }
+
+  .hero-cta-group {
+    justify-content: center;
+  }
+
+  .hero-trust-badges {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .slider-arrow-prev {
+    right: 55%;
+  }
+  .slider-arrow-next {
+    left: 55%;
+    right: auto;
+  }
+  .slider-dots-container {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

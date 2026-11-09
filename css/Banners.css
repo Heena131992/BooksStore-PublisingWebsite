@@ -1,0 +1,526 @@
+/* ==========================================================================
+   5. DUAL PROMO BANNER & TRIPLE MINI BANNER SECTION
+   ========================================================================== */
+/* ================= BANNER WIDTH FIX ================= */
+
+/* 1. Upar wale dono bade banners ki width kam karne ke liye */
+.banner-grid-container {
+  width: 82% !important;          /* 90% se ghatakar 82% ya 80% karein */
+  max-width: 1150px !important;    /* 1400px se kam karke 1150px karein */
+  margin: 0 auto !important;       /* Center me align rakhega */
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;                       /* Cards ke beech ka gap */
+  box-sizing: border-box;
+}
+
+/* 2. Banners ki height bhi proportionate karne ke liye (Optional) */
+.banner-box {
+  height: 290px !important;        /* Pehle 340px tha, thoda compact look dega */
+}
+
+/* 3. Niche wale 3 mini banners ki width bhi sath me match karne ke liye */
+.triple-banner-grid {
+  width: 92% !important;
+  max-width: 1150px !important;
+  margin: 0 auto !important;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.banner-section-wrapper {
+  padding: 40px 0 20px 0;
+  background-color: #ffffff;
+}
+
+/* 90% Grid container for 2 large banners */
+.banner-grid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  box-sizing: border-box;
+}
+
+/* Large Banner Frame */
+.banner-box {
+  position: relative;
+  height: 340px;
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 35px 40px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+              box-shadow 0.4s ease;
+}
+
+.banner-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.16);
+}
+
+/* Background image overlay with subtle dark tint */
+.banner-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: 1;
+}
+
+.banner-box:hover::before {
+  transform: scale(1.06);
+}
+
+/* Banner 1 Image: Dark Silhouette City Skyline */
+.banner-box-1::before {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.7)), url('../images/banner.jpg');
+}
+
+/* Banner 2 Image: Modern Reading/Shopping Backdrop */
+.banner-box-2::before {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.55), rgba(15, 23, 42, 0.65)), url('../images/b18.jpg');
+}
+
+/* Content above overlay */
+.banner-content {
+  position: relative;
+  z-index: 2;
+  max-width: 440px;
+  text-align: left;
+}
+
+.banner-content h4 {
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+}
+
+.banner-content h2 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  color: #ffffff;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.banner-content span {
+  color: #e2e8f0;
+  font-size: 13px;
+  line-height: 1.5;
+  display: block;
+  margin-bottom: 22px;
+}
+
+/* Buttons */
+.btn-banner-white {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: #ffffff;
+  color: #0f172a;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  border: 1px solid #ffffff;
+}
+
+.btn-banner-white:hover {
+  background-color: #7c3aed;
+  color: #ffffff;
+  border-color: #7c3aed;
+  transform: translateY(-2px);
+}
+
+.btn-banner-outline {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: transparent;
+  color: #ffffff;
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1.5px solid #ffffff;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.btn-banner-outline:hover {
+  background-color: #ffffff;
+  color: #0f172a;
+  transform: translateY(-2px);
+}
+
+/* --------------------------------------------------------------------------
+   6. TRIPLE MINI BANNER STRIP
+   -------------------------------------------------------------------------- */
+.triple-banner-section {
+  padding: 10px 0 50px 0;
+  background-color: #ffffff;
+}
+
+.triple-banner-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.banner-box-small {
+  position: relative;
+  height: 200px;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px 28px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.banner-box-small:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.12);
+}
+
+.banner-box-small::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+  z-index: 1;
+}
+
+.banner-box-small:hover::before {
+  transform: scale(1.08);
+}
+
+/* Background mappings */
+.banner-mini-1::before {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), url('../images/banner1.jpg');
+}
+
+.banner-mini-2::before {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), url('../images/banner2.webp');
+}
+
+.banner-mini-3::before {
+  background-image: linear-gradient(rgba(15, 23, 42, 0.65), rgba(15, 23, 42, 0.75)), url('../images/b19.jpg');
+}
+
+.banner-box-small h2 {
+  position: relative;
+  z-index: 2;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.banner-box-small h3 {
+  position: relative;
+  z-index: 2;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #ea580c;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive Media Queries
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .banner-grid-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .banner-box {
+    height: 280px;
+    padding: 26px 30px;
+  }
+
+  .triple-banner-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .banner-box-small {
+    height: 160px;
+  }
+}
+
+@media (max-width: 576px) {
+  .banner-box {
+    height: 250px;
+    padding: 20px 22px;
+  }
+
+  .banner-content h2 {
+    font-size: 26px;
+  }
+}
+
+/* ================= 7. SMALL DUAL BANNERS ================= */
+#sm-banner.dual-banner-section {
+    width: 100%;
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    box-sizing: border-box;
+}
+
+#sm-banner .banner-box {
+    flex: 1;
+    min-height: 380px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 24px;
+    padding: 45px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 12px 35px rgba(15, 23, 42, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+    box-sizing: border-box;
+}
+
+#sm-banner .banner-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 45px rgba(124, 58, 237, 0.22);
+}
+
+/* Promotional Small Tag */
+.banner-tag {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #facc15;
+    background: rgba(250, 204, 21, 0.16);
+    border: 1px solid rgba(250, 204, 21, 0.35);
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+    backdrop-filter: blur(4px);
+}
+
+.banner-tag.highlight {
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.16);
+    border-color: rgba(56, 189, 248, 0.35);
+}
+
+/* Headings & Text */
+#sm-banner .banner-box h2 {
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+}
+
+#sm-banner .banner-box h4 {
+    color: #e2e8f0;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+#sm-banner .banner-box p {
+    color: #cbd5e1;
+    font-size: 15px;
+    line-height: 1.5;
+    max-width: 420px;
+    margin-bottom: 26px;
+}
+
+/* Glass Outline Button */
+.white-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1.5px solid rgba(255, 255, 255, 0.8);
+    border-radius: 35px;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    transition: all 0.25s ease;
+}
+
+.white-btn i {
+    font-size: 13px;
+    transition: transform 0.25s ease;
+}
+
+.white-btn:hover {
+    background: #ffffff;
+    color: #0f172a;
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.white-btn:hover i {
+    transform: translateX(4px);
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+    #sm-banner.dual-banner-section {
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 20px;
+    }
+
+    #sm-banner .banner-box {
+        min-height: 320px;
+        padding: 35px 25px;
+    }
+
+    #sm-banner .banner-box h2 {
+        font-size: 28px;
+    }
+
+    #sm-banner .banner-box h4 {
+        font-size: 18px;
+    }
+}
+
+/* ================= 8. TRIPLE STRIP BANNERS ================= */
+#banner3.triple-banner-section {
+    width: 100%;
+    max-width: 1300px;
+    margin: 10px auto 50px auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    gap: 24px;
+    box-sizing: border-box;
+}
+
+#banner3 .banner-box {
+    flex: 1;
+    min-height: 240px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    padding: 30px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+#banner3 .banner-box:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 35px rgba(124, 58, 237, 0.18);
+}
+
+/* Small Tag on Card Top */
+.strip-tag {
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #facc15;
+    background: rgba(250, 204, 21, 0.16);
+    border: 1px solid rgba(250, 204, 21, 0.3);
+    padding: 4px 12px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    backdrop-filter: blur(4px);
+}
+
+.strip-tag.highlight {
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.16);
+    border-color: rgba(56, 189, 248, 0.3);
+}
+
+.strip-tag.discount {
+    color: #fdba74;
+    background: rgba(253, 186, 116, 0.16);
+    border-color: rgba(253, 186, 116, 0.3);
+}
+
+/* Headings */
+#banner3 .banner-box h2 {
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.25;
+    margin: 0 0 8px 0;
+    letter-spacing: -0.3px;
+}
+
+#banner3 .banner-box h3 {
+    color: #e2e8f0;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: 0.2px;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 992px) {
+    #banner3.triple-banner-section {
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 16px;
+    }
+
+    #banner3 .banner-box {
+        min-height: 190px;
+        padding: 24px 20px;
+    }
+
+    #banner3 .banner-box h2 {
+        font-size: 21px;
+    }
+}

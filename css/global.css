@@ -1,0 +1,410 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@300;400;500;600;700;800;900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg-dark: #0f0720;
+  --text-main: #ffffff;
+  --text-muted: #a39bb8;
+  --primary-purple: #7c3aed;
+  --primary-indigo: #4f46e5;
+  --glass-bg: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-blur: blur(14px);
+  --gradient-accent: linear-gradient(90deg, #f43f5e 0%, #fb923c 100%);
+  --btn-gradient: linear-gradient(135deg, #7c3aed 0%, #4f46e5 100%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'League Spartan', sans-serif;
+}
+
+body {
+ font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--text-main);
+  background: 
+    radial-gradient(circle at 75% 35%, rgba(21, 172, 199, 0.35) 0%, transparent 50%),
+    radial-gradient(circle at 20% 15%, rgba(244, 244, 247, 0.25) 0%, transparent 45%),
+    linear-gradient(135deg, #f7f7f7 0%, #1e0d38 50%, #ffffff 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+/* Glassmorphism utility */
+.glass-box {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+}
+
+/* Har section ka fixed responsive container taaki content dono taraf se barabar space chode */
+#hero,
+#feature,
+#product1,
+#sm-banner,
+#banner3,
+#footer,
+#footer2 {
+  width: 100%;
+  max-width: 1740px; /* Standard wide screen layout */
+
+  margin-right: auto;
+  box-sizing: border-box;
+}
+
+/* Left aur Right standard padding */
+.section-p1 {
+  padding: 50px 40px;
+}
+
+/* .section-m1 {
+  margin-top: 50px;
+  margin-bottom: 50px;
+} */
+
+@media (max-width: 1200px) {
+  .section-p1 {
+    padding: 40px 30px;
+  }
+}
+
+@media (max-width: 799px) {
+  .section-p1 {
+    padding: 30px 20px;
+  }
+}
+
+/* ================= GLOBAL FLOATING NAVBAR ICONS & BADGES ================= */
+.nav-wishlist-icon {
+    background: #fee2e2 !important;
+    color: #ef4444 !important;
+    border: none;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.nav-wishlist-icon:hover {
+    transform: scale(1.08);
+}
+
+.nav-wishlist-icon i {
+    font-size: 18px;
+    color: #ef4444;
+}
+
+.cart-badge-count {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    background: #ef4444;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 3px;
+    box-sizing: border-box;
+}
+
+/* ================= UNIVERSAL OVERLAY ================= */
+.global-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(246, 246, 247, 0.5);
+    backdrop-filter: blur(2px);
+    z-index: 9998;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.global-drawer-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* ================= SLIDE-OUT DRAWERS (WISHLIST & CART) ================= */
+.global-slide-drawer {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 390px;
+    max-width: 90vw;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: -10px 0 35px rgba(0, 0, 0, 0.18);
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+}
+
+.global-slide-drawer.open {
+    right: 0;
+}
+
+.drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 20px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.drawer-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+    color: #102a43;
+}
+
+.drawer-close-btn {
+    background: transparent;
+    border: none;
+    font-size: 22px;
+    color: #64748b;
+    cursor: pointer;
+}
+
+.drawer-items-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.drawer-item-row {
+    display: flex;
+    gap: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #f1f5f9;
+    align-items: flex-start;
+}
+
+.drawer-item-thumb {
+    width: 70px;
+    height: 98px;
+    border-radius: 4px;
+    overflow: hidden;
+    flex-shrink: 0;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+}
+
+.drawer-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.drawer-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.drawer-item-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #102a43;
+    margin: 0 0 6px 0;
+}
+
+.drawer-item-price {
+    font-size: 15px;
+    font-weight: 700;
+    color: #102a43;
+    margin-bottom: 10px;
+}
+
+.drawer-action-btn {
+    background: #102a43;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    padding: 7px 12px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: center;
+}
+
+.drawer-action-btn:hover {
+    background: #1e3a5f;
+}
+
+.drawer-del-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: auto;
+}
+
+.drawer-del-btn:hover {
+    color: #ef4444;
+}
+
+/* Cart Bottom Checkout Panel */
+.drawer-footer-checkout {
+    padding: 20px;
+    border-top: 1px solid #f1f5f9;
+    background: #fafbfc;
+}
+
+.drawer-subtotal {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 700;
+    color: #102a43;
+    margin-bottom: 14px;
+}
+
+.btn-checkout-now {
+    width: 100%;
+    padding: 12px 0;
+    background: #7c3aed;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.btn-checkout-now:hover {
+    background: #6d28d9;
+}
+
+/* ================= UNIVERSAL LOGIN MODAL ================= */
+.global-modal-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    width: 420px;
+    max-width: 90vw;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.25);
+    z-index: 10000;
+    padding: 30px;
+    box-sizing: border-box;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.global-modal-dialog.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.login-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+}
+
+.login-modal-header h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: #102a43;
+}
+
+.login-form-group {
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.login-form-group label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #334e68;
+    margin-bottom: 6px;
+}
+
+.login-form-group input {
+    height: 44px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 0 14px;
+    font-size: 15px;
+    outline: none;
+}
+
+.login-form-group input:focus {
+    border-color: #7c3aed;
+}
+
+.btn-submit-auth {
+    width: 100%;
+    height: 46px;
+    background: #7c3aed;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-submit-auth:hover {
+    background: #6d28d9;
+}
+
+/* Global Toast Popup */
+.global-toast-notification {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #102a43;
+    color: #ffffff;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.global-toast-notification.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
