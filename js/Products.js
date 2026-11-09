@@ -1,4 +1,12 @@
+fetch('https://bookbackend-1-czz1.onrender.com/api/books')
+  .then(response => response.json())
+  .then(data => {
+    console.log("Live backend data:", data);
+    // Yahan aapka display/cards render karne ka logic aayega
+  })
+  .catch(error => console.error("Error fetching books:", error));
 
+  
 const API_BASE_URL = 'http://localhost:5000/api';
 
 
