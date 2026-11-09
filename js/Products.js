@@ -6,7 +6,7 @@ fetch('https://bookbackend-1-czz1.onrender.com/api/books')
   })
   .catch(error => console.error("Error fetching books:", error));
 
-  
+
 const API_BASE_URL = 'http://localhost:5000/api';
 
 
@@ -78,6 +78,71 @@ function initProductActionButtons() {
       window.location.href = 'checkout.html';
     });
   });
+}
+
+// Live Render Backend ka URL
+const API_URL = "https://bookbackend-1-czz1.onrender.com/api/books";
+
+// Page load hote hi data fetch karein
+document.addEventListener("DOMContentLoaded", () => {
+  fetchBooks();
+});
+
+async function fetchBooks() {
+  const booksContainer = document.querySelector("#books-container") || document.querySelector(".products-grid"); // Apne container ki id ya class check kar lein
+
+  if (!booksContainer) {
+    console.error("Books container element HTML me nahi mila!");
+    return;
+  }
+
+  // Loading indicator
+  booksContainer.innerHTML = "<p style='text-align:center;'>Loading books...</p>";
+
+  try {
+    const response = await fetch(API_URL);
+    const result = await response.json();
+
+    // Data check karein (Backend data 'result.data' me bhej raha hai)
+    if (result.success && result.data.length > 0) {
+      booksContainer.innerHTML = ""; // Loader hatayein
+
+      result.data.forEach((book) => {
+        // Book card ka HTML design
+        const bookCard = `
+          <div class="book-card" style="border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; margin: 10px; background: #fff;">
+            <img 
+              src="${book.image || book.cover}" 
+              alt="${book.title}" 
+              style="width: 100%; height: 220px; object-fit: cover; border-radius: 6px;"
+              onerror="this.src='https://via.placeholder.com/150x220?text=No+Cover'"
+            />
+            <h3 style="margin: 10px 0 5px; font-size: 1.1rem;">${book.title}</h3>
+            <p style="color: #64748b; font-size: 0.9rem; margin-bottom: 8px;">By ${book.author}</p>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+              <div>
+                <span style="font-weight: bold; font-size: 1.1rem; color: #0f172a;">₹${book.salePrice || book.price}</span>
+                ${book.originalPrice ? `<span style="text-decoration: line-through; color: #94a3b8; font-size: 0.85rem; margin-left: 6px;">₹${book.originalPrice}</span>` : ''}
+              </div>
+              ${book.discount ? `<span style="background: #fee2e2; color: #ef4444; font-size: 0.75rem; padding: 2px 6px; border-radius: 4px;">${book.discount}</span>` : ''}
+            </div>
+
+            <button style="width: 100%; margin-top: 12px; padding: 8px; background: #2563eb; color: #fff; border: none; border-radius: 6px; cursor: pointer;">
+              Buy Now
+            </button>
+          </div>
+        `;
+
+        booksContainer.innerHTML += bookCard;
+      });
+    } else {
+      booksContainer.innerHTML = "<p>Koi book uplabdh nahi hai.</p>";
+    }
+  } catch (error) {
+    console.error("Error fetching books:", error);
+    booksContainer.innerHTML = "<p style='color:red;'>Books load karne me dikkat aayi. Kripya page refresh karein.</p>";
+  }
 }
 
 // Execution on DOM Ready
