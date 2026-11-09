@@ -3,8 +3,8 @@
  * Project: Mindful Pages Publishers / Kovark Bookstore
  * Script: js/home.js
  * Description: Complete Home Page Controller handling Hero Carousel, Featured
- *              Grids, Top-Right Wishlist Heart Toggles, Add to Cart, Buy Now,
- *              Quick View routing, and LocalStorage Badge Synchronizations.
+ *              Grids (Live Backend API), Wishlist Hearts, Add to Cart, Buy Now,
+ *              Quick View routing, Search, and Drawer Synchronizations.
  * ==============================================================================
  */
 
@@ -12,12 +12,20 @@ document.addEventListener("DOMContentLoaded", () => {
     "use strict";
 
     /* ==========================================================================
-       1. GLOBAL STORAGE KEYS & SHARED HELPERS
+       1. API CONFIGURATION & GLOBAL STORAGE KEYS
        ========================================================================== */
+    // Local testing ke liye localhost:5000, live deployment ke liye apna backend URL dalein
+    const API_BASE_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+        ? "http://localhost:5000"
+        : "https://mindfullpagesbackendapi.onrender.com"; // <-- Deploy hone ke baad apna live backend URL yahan rakhein
+
     const STORAGE_KEYS = {
         CART: "mp_cart",
         WISHLIST: "mp_wishlist"
     };
+
+    // Global in-memory list for dynamic live search
+    window.homeLiveBooks = [];
 
     /**
      * Safely parse localStorage array
@@ -43,7 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /**
-     * Show Toast notification (Fallback if common.js toast isn't ready)
+     * Show Toast notification
      */
     function notifyUser(message, iconClass = "fa-check-circle") {
         if (typeof window.triggerGlobalToast === "function") {
@@ -82,14 +90,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2600);
     }
 
-   /* ==========================================================================
+    /* ==========================================================================
        2. NAVBAR BADGE COUNTERS REALTIME SYNC
        ========================================================================== */
     function syncNavbarBadges() {
         const cart = getStoredData(STORAGE_KEYS.CART) || [];
         const wishlist = getStoredData(STORAGE_KEYS.WISHLIST) || [];
 
-        // Quantity ke mutabik accurate total count
         const totalCartQty = cart.reduce((accum, item) => accum + (parseInt(item.quantity, 10) || 1), 0);
 
         // Update all Cart badges
@@ -150,20 +157,19 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ==========================================================================
-       4. CARD METADATA EXTRACTOR (Universal Accurate Detection)
+       4. CARD METADATA EXTRACTOR (Accurate Detection for Dynamic & Static Cards)
        ========================================================================== */
     function extractCardData(card) {
         if (!card) return null;
 
-        // 1. Title (Checks .book-title, h3, h5, .pro-title)
+        // 1. Title
         const titleEl = card.querySelector(".book-title a, .book-title, .pro-title, h3, h5, h4");
         const title = titleEl ? titleEl.innerText.trim() : "Mindful Book";
 
-        // 2. Accurate Unique ID Detection (Checks data-id, URL query ?id=X, or SKU)
+        // 2. ID Detection
         let bookId = card.getAttribute("data-id") || card.dataset.id;
         
         if (!bookId) {
-            // Check link with ?id= (e.g. Quick view or Title link)
             const idLink = card.querySelector("a[href*='id=']");
             if (idLink) {
                 const match = idLink.getAttribute("href").match(/[?&]id=([^&#]+)/);
@@ -176,12 +182,11 @@ document.addEventListener("DOMContentLoaded", () => {
             if (skuEl) bookId = skuEl.innerText.replace(/[^0-9]/g, "");
         }
 
-        // Fallback: Title-based unique slug
         if (!bookId) {
             bookId = title.toLowerCase().replace(/[^a-z0-9]/g, "-").replace(/-+/g, "-");
         }
 
-        // 3. Price (Extracts digits properly)
+        // 3. Price
         const salePriceEl = card.querySelector(".sale-price, .pro-price, .price, h4");
         let priceNum = 20.00;
         let priceText = "$20.00";
@@ -207,12 +212,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ==========================================================================
-       5. LIVE CART DRAWER RENDER ENGINE (Fixes Empty Cart Screen)
+       5. LIVE CART DRAWER RENDER ENGINE
        ========================================================================== */
     function renderCartDrawer() {
         const cart = getStoredData(STORAGE_KEYS.CART) || [];
-        
-        // Find cart drawer container across all common selectors
         const cartContainer = document.querySelector("#cartItemsList, .cart-drawer-items, .cart-items-body, .cart-body, aside .cart-content");
         const subtotalEl = document.querySelector("#cartSubtotal, .cart-subtotal-val, .cart-total-price, .cart-drawer-footer span:last-child");
 
@@ -238,7 +241,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             return `
                 <div class="cart-drawer-item" style="display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.08); align-items: center;">
-                    <img src="${item.image}" alt="${item.title}" style="width: 52px; height: 72px; object-fit: cover; border-radius: 4px; flex-shrink: 0;" />
+                    <img src="${item.image}" alt="${item.title}" style="width: 52px; height: 72px; object-fit: cover; border-radius: 4px; flex-shrink: 0;" onerror="this.src='images/placeholder.jpg'" />
                     <div style="flex: 1; min-width: 0;">
                         <h4 style="margin: 0 0 4px 0; font-size: 0.9rem; color: #ffffff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.title}</h4>
                         <span style="color: #a855f7; font-weight: 700; font-size: 0.9rem;">$${itemPrice.toFixed(2)}</span>
@@ -284,19 +287,123 @@ document.addEventListener("DOMContentLoaded", () => {
 
         setStoredData(STORAGE_KEYS.CART, cart);
         syncNavbarBadges();
-        renderCartDrawer(); // Screen render call
+        renderCartDrawer();
         if (typeof notifyUser === "function") {
             notifyUser(`Added "${bookData.title}" to Cart!`, "fa-bag-shopping");
         }
     }
 
     /* ==========================================================================
-       7. GLOBAL CLICK DELEGATION FOR ALL HOME & DRAWER ACTIONS
+       7. DYNAMIC LIVE PRODUCTS FETCH & RENDER (Dashboard to Home Page)
+       ========================================================================== */
+    async function loadFeaturedProductsFromBackend() {
+        // Featured products grid container find karein
+        const container = document.querySelector("#featuredProductsContainer, .pro-container, .featured-books-grid, #featured-products .pro-container, .products-grid");
+        if (!container) return;
+
+        container.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align: center; padding: 40px 10px; color: #94a3b8;">
+                <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; margin-bottom: 12px; color: #a855f7;"></i>
+                <p style="margin: 0; font-size: 1rem;">Dashboard se products load ho rahe hain...</p>
+            </div>
+        `;
+
+        try {
+            // Backend endpoint check: Pehle /api/books, fail hone par /api/products check karega
+            let res = await fetch(`${API_BASE_URL}/api/books`).catch(() => null);
+            if (!res || !res.ok) {
+                res = await fetch(`${API_BASE_URL}/api/products`).catch(() => null);
+            }
+
+            if (!res || !res.ok) {
+                throw new Error("Backend server response not OK");
+            }
+
+            let data = await res.json();
+            const books = Array.isArray(data) ? data : (data.books || data.products || data.data || []);
+
+            if (books.length === 0) {
+                container.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #94a3b8;">
+                        <p style="margin: 0; font-size: 1rem;">Dashboard me abhi koi product available nahi hai.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Global search list update karein live data se
+            window.homeLiveBooks = books;
+
+            // Cards render karein
+            container.innerHTML = books.map((book) => {
+                const bookId = book._id || book.id;
+                const bookTitle = book.title || book.name || "Untitled Book";
+                const bookPrice = parseFloat(book.price) || 20.00;
+                const bookAuthor = book.author || "Mindful Pages";
+                const bookCategory = book.category || "Novel";
+                const bookImg = book.imageUrl || book.image || "images/placeholder.jpg";
+                const bookRating = book.rating || 5;
+
+                // Rating stars generator
+                const starsHTML = Array.from({ length: 5 }, (_, i) => 
+                    `<i class="fa-solid fa-star${i < Math.floor(bookRating) ? '' : '-half-stroke'}" style="color: #f59e0b; font-size: 0.8rem;"></i>`
+                ).join('');
+
+                return `
+                    <div class="pro-card pro" data-id="${bookId}">
+                        <div class="pro-img-box" style="position: relative;">
+                            <a href="product-details.html?id=${bookId}">
+                                <img src="${bookImg}" alt="${bookTitle}" onerror="this.src='images/placeholder.jpg'" />
+                            </a>
+                            <button class="btn-card-wishlist btn-wishlist" type="button" title="Add to Wishlist" style="position: absolute; top: 12px; right: 12px; z-index: 5;">
+                                <i class="fa-regular fa-heart"></i>
+                            </button>
+                        </div>
+                        <div class="des" style="padding-top: 10px;">
+                            <span class="pro-category" style="font-size: 0.8rem; color: #a855f7; text-transform: uppercase; font-weight: 600;">${bookCategory}</span>
+                            <h5 class="pro-title book-title" style="margin: 6px 0;">
+                                <a href="product-details.html?id=${bookId}" style="color: inherit; text-decoration: none;">${bookTitle}</a>
+                            </h5>
+                            <div class="pro-author" style="font-size: 0.85rem; color: #64748b; margin-bottom: 6px;">By ${bookAuthor}</div>
+                            <div class="star" style="margin-bottom: 8px;">
+                                ${starsHTML}
+                            </div>
+                            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 10px;">
+                                <h4 class="pro-price sale-price" style="margin: 0; color: #10b981; font-weight: 700;">$${bookPrice.toFixed(2)}</h4>
+                                <div style="display: flex; gap: 6px;">
+                                    <button class="btn-card-add-cart btn-add-cart" type="button" title="Add to Cart" style="padding: 6px 10px; border-radius: 4px; cursor: pointer;">
+                                        <i class="fa-solid fa-cart-shopping"></i>
+                                    </button>
+                                    <button class="btn-card-buy-now btn-buy-now" type="button" style="padding: 6px 10px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 600;">
+                                        Buy Now
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Cards aane ke baad Wishlist icons ka status update karein
+            syncHomeWishlistIcons();
+
+        } catch (err) {
+            console.error("Error loading products from dashboard:", err);
+            container.innerHTML = `
+                <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #ef4444; background: rgba(239, 68, 68, 0.05); border-radius: 8px;">
+                    <i class="fa-solid fa-triangle-exclamation" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                    <p style="margin: 0; font-weight: 600;">Products load nahi ho paye.</p>
+                    <small style="color: #94a3b8;">Backend server check karein ya Port 5000 ensure karein.</small>
+                </div>
+            `;
+        }
+    }
+
+    /* ==========================================================================
+       8. GLOBAL CLICK DELEGATION (Cards, Wishlist, Cart Drawer, Buy Now)
        ========================================================================== */
     document.addEventListener("click", (e) => {
-        // -------------------------------------------------------------
-        // A. WISHLIST HEART TOGGLE (Multi-Item Safe)
-        // -------------------------------------------------------------
+        // A. WISHLIST HEART TOGGLE
         const wishBtn = e.target.closest(".btn-card-wishlist, .pro-img-box .btn-wishlist, .btn-wishlist");
         if (wishBtn) {
             e.preventDefault();
@@ -311,10 +418,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (existIdx > -1) {
                 wishlist.splice(existIdx, 1);
-                if (typeof notifyUser === "function") notifyUser(`Removed "${bookData.title}" from Wishlist`, "fa-heart-crack");
+                notifyUser(`Removed "${bookData.title}" from Wishlist`, "fa-heart-crack");
             } else {
                 wishlist.push(bookData);
-                if (typeof notifyUser === "function") notifyUser(`Saved "${bookData.title}" to Wishlist!`, "fa-heart");
+                notifyUser(`Saved "${bookData.title}" to Wishlist!`, "fa-heart");
             }
 
             setStoredData(STORAGE_KEYS.WISHLIST, wishlist);
@@ -323,9 +430,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // -------------------------------------------------------------
         // B. ADD TO CART BUTTON CLICK
-        // -------------------------------------------------------------
         const addBtn = e.target.closest(".btn-card-add-cart, .btn-add-cart");
         if (addBtn) {
             e.preventDefault();
@@ -350,9 +455,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // -------------------------------------------------------------
         // C. BUY NOW BUTTON CLICK
-        // -------------------------------------------------------------
         const buyBtn = e.target.closest(".btn-card-buy-now, .btn-buy-now");
         if (buyBtn) {
             e.preventDefault();
@@ -376,9 +479,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // -------------------------------------------------------------
         // D. CART DRAWER QUANTITY (+ / -) & REMOVE BUTTONS
-        // -------------------------------------------------------------
         const qtyBtn = e.target.closest(".cart-qty-btn");
         if (qtyBtn) {
             const idx = parseInt(qtyBtn.getAttribute("data-index"), 10);
@@ -390,9 +491,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     cart[idx].quantity = (parseInt(cart[idx].quantity, 10) || 1) + 1;
                 } else if (action === "decrease") {
                     cart[idx].quantity = (parseInt(cart[idx].quantity, 10) || 1) - 1;
-                    if (cart[idx].quantity <= 0) {
-                        cart.splice(idx, 1);
-                    }
+                    if (cart[idx].quantity <= 0) cart.splice(idx, 1);
                 }
                 setStoredData(STORAGE_KEYS.CART, cart);
                 syncNavbarBadges();
@@ -414,23 +513,15 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // -------------------------------------------------------------
-        // E. CART OPEN BUTTON CLICK (Navbar)
-        // -------------------------------------------------------------
+        // E. OPEN CART DRAWER (Navbar Icon)
         const openCart = e.target.closest("#openCartBtn");
         if (openCart) {
             renderCartDrawer();
         }
     });
 
-    // Page load initialization
-    document.addEventListener("DOMContentLoaded", () => {
-        syncNavbarBadges();
-        syncHomeWishlistIcons();
-        renderCartDrawer();
-    });
     /* ==========================================================================
-       7. HERO SECTION 3D INTERACTION & BANNER SLIDER
+       9. HERO SECTION 3D TILT EFFECT
        ========================================================================== */
     const heroCover = document.querySelector(".hero-book-cover, .hero-slider-wrap");
     if (heroCover) {
@@ -456,14 +547,12 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ==========================================================================
-       8. VIEW MORE BOOKS EXPANSION / REDIRECTION
+       10. VIEW MORE BOOKS TOGGLE
        ========================================================================== */
-    const viewMoreBtn = document.querySelector(".btn-view-more");
+    const viewMoreBtn = document.querySelector(".btn-view-more, .view-more-btn");
     if (viewMoreBtn) {
         viewMoreBtn.addEventListener("click", (e) => {
             const extraHiddenCards = document.querySelectorAll(".pro-card.extra-hidden, .pro.extra-hidden");
-            
-            // If hidden cards exist on page, reveal them; otherwise proceed to gallery.html
             if (extraHiddenCards.length > 0) {
                 e.preventDefault();
                 extraHiddenCards.forEach(card => {
@@ -476,19 +565,16 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     /* ==========================================================================
-       9. INITIAL BOOTSTRAP EXECUTION
+       11. INITIAL BOOTSTRAP
        ========================================================================== */
-    function initializeHomePage() {
-        syncNavbarBadges();
-        syncHomeWishlistIcons();
-    }
-
-    initializeHomePage();
+    syncNavbarBadges();
+    syncHomeWishlistIcons();
+    renderCartDrawer();
+    loadFeaturedProductsFromBackend(); // Live data load call
 });
 
-
 /* ==========================================================================
-   HOME PAGE UNIVERSAL SEARCH ENGINE
+   12. HOME PAGE UNIVERSAL SEARCH ENGINE (Live Data Sync)
    ========================================================================== */
 (function setupHomeSearch() {
     const searchInput = document.getElementById("homeSearchInput");
@@ -497,56 +583,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!searchInput || !resultsContainer) return;
 
-    // Books Dataset for Instant Home Search
-    const searchCatalog = [
-        {
-            id: 1,
-            title: "Attachment, Not Anxiety",
-            author: "Saira Nazmeen-Grey",
-            category: "Psychology",
-            sku: "9789309332289",
-            price: "$25.11",
-            image: "images/9789371346603_EN.jpg"
-        },
-        {
-            id: 2,
-            title: "Secure Love Scripts",
-            author: "Matteo Reinhardt",
-            category: "Family",
-            sku: "9789371346627",
-            price: "$21.11",
-            image: "images/9789371346627_DE.jpg"
-        },
-        {
-            id: 3,
-            title: "Closeness Without Chaos",
-            author: "Kaia Solander",
-            category: "Self-Help",
-            sku: "9789371347037",
-            price: "$20.53",
-            image: "images/9789371347037_DE.jpg"
-        },
-        {
-            id: 4,
-            title: "Stop Testing People",
-            author: "Kaia Solander",
-            category: "Psychology",
-            sku: "9789371347129",
-            price: "$21.66",
-            image: "images/9789371347129_FR.jpg"
-        },
-        {
-            id: 5,
-            title: "Psychology of Money",
-            author: "Morgan Housel",
-            category: "Business",
-            sku: "9789375365861",
-            price: "$65.00",
-            image: "images/f2.jpg"
-        }
+    // Fallback static books
+    const fallbackCatalog = [
+        { id: 1, title: "Attachment, Not Anxiety", author: "Saira Nazmeen-Grey", category: "Psychology", sku: "9789309332289", price: "$25.11", image: "images/9789371346603_EN.jpg" },
+        { id: 2, title: "Secure Love Scripts", author: "Matteo Reinhardt", category: "Family", sku: "9789371346627", price: "$21.11", image: "images/9789371346627_DE.jpg" },
+        { id: 3, title: "Closeness Without Chaos", author: "Kaia Solander", category: "Self-Help", sku: "9789371347037", price: "$20.53", image: "images/9789371347037_DE.jpg" },
+        { id: 4, title: "Stop Testing People", author: "Kaia Solander", category: "Psychology", sku: "9789371347129", price: "$21.66", image: "images/9789371347129_FR.jpg" },
+        { id: 5, title: "Psychology of Money", author: "Morgan Housel", category: "Business", sku: "9789375365861", price: "$65.00", image: "images/f2.jpg" }
     ];
 
-    // Live Input Event
     searchInput.addEventListener("input", (e) => {
         const query = e.target.value.toLowerCase().trim();
         const cleanQuery = query.replace(/[-\s]/g, "");
@@ -557,17 +602,27 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        // Search matches: Title, Author, Category, SKU
-        const matched = searchCatalog.filter(book => {
-            const titleMatch = book.title.toLowerCase().includes(query);
-            const authorMatch = book.author.toLowerCase().includes(query);
-            const catMatch = book.category.toLowerCase().includes(query);
-            const skuMatch = book.sku.replace(/[-\s]/g, "").includes(cleanQuery);
+        // Agar live books load ho chuki hain toh unka use karein, warna fallback
+        const sourceCatalog = (window.homeLiveBooks && window.homeLiveBooks.length > 0)
+            ? window.homeLiveBooks.map(b => ({
+                id: b._id || b.id,
+                title: b.title || b.name,
+                author: b.author || "Mindful Pages",
+                category: b.category || "General",
+                sku: b.sku || String(b._id || b.id),
+                price: `$${(parseFloat(b.price) || 0).toFixed(2)}`,
+                image: b.imageUrl || b.image || "images/placeholder.jpg"
+            }))
+            : fallbackCatalog;
 
+        const matched = sourceCatalog.filter(book => {
+            const titleMatch = (book.title || "").toLowerCase().includes(query);
+            const authorMatch = (book.author || "").toLowerCase().includes(query);
+            const catMatch = (book.category || "").toLowerCase().includes(query);
+            const skuMatch = (book.sku || "").replace(/[-\s]/g, "").includes(cleanQuery);
             return titleMatch || authorMatch || catMatch || skuMatch;
         });
 
-        // Render Results List
         resultsContainer.innerHTML = "";
         if (matched.length === 0) {
             resultsContainer.innerHTML = `<div class="search-no-results">No books found for "<strong>${e.target.value}</strong>"</div>`;
@@ -582,22 +637,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                     <div class="search-item-info">
                         <h4 class="search-item-title">${book.title}</h4>
-                        <div class="search-item-meta">By ${book.author} • Category: <span>${book.category}</span></div>
+                        <div class="search-item-meta">By ${book.author} | Category: <span>${book.category}</span></div>
                         <div class="search-item-price">${book.price}</div>
                     </div>
                 `;
                 resultsContainer.appendChild(itemLink);
             });
         }
-
         resultsContainer.classList.add("active");
     });
 
-    // Enter Key -> Gallery Search Redirect
     function submitSearch() {
         const val = searchInput.value.trim();
         if (val) {
             window.location.href = `gallery.html?search=${encodeURIComponent(val)}`;
+        } else {
+            window.location.href = `gallery.html`;
         }
     }
 
@@ -609,10 +664,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     if (searchBtn) {
-        searchBtn.addEventListener("click", submitSearch);
+        searchBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            submitSearch();
+        });
     }
 
-    // Close Dropdown when clicking outside
     document.addEventListener("click", (e) => {
         if (!e.target.closest(".home-search-wrapper")) {
             resultsContainer.classList.remove("active");
@@ -620,84 +677,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 })();
 
-
-// ================= HOME SEARCH BUTTON CLICK HANDLER =================
+/* ==========================================================================
+   13. MOBILE DRAWER NAVIGATION
+   ========================================================================== */
 document.addEventListener("DOMContentLoaded", () => {
-    const searchInput = document.getElementById("homeSearchInput");
-    const searchBtn = document.getElementById("homeSearchBtn");
+    const hamburgerBtn = document.getElementById("hamburgerBtn");
+    const mobileDrawer = document.getElementById("mobileDrawer");
+    const drawerOverlay = document.getElementById("drawerOverlay");
+    const drawerCloseBtn = document.getElementById("drawerCloseBtn");
+    const mobileNavLinks = document.querySelectorAll(".mobile-nav-links a");
 
-    function executeHomeSearch() {
-        if (!searchInput) return;
-        const query = searchInput.value.trim();
-
-        if (query !== "") {
-            // Gallery page par search term ke sath redirect karein
-            window.location.href = `gallery.html?search=${encodeURIComponent(query)}`;
-        } else {
-            // Agar khali click kiya toh seedha gallery page kholein
-            window.location.href = `gallery.html`;
-        }
+    function openMenu() {
+        hamburgerBtn?.classList.add("active");
+        mobileDrawer?.classList.add("active");
+        drawerOverlay?.classList.add("active");
+        document.body.style.overflow = "hidden";
     }
 
-    // 1. Search Icon / Button Click hone par
-    if (searchBtn) {
-        searchBtn.addEventListener("click", (e) => {
-            e.preventDefault();
-            executeHomeSearch();
-        });
+    function closeMenu() {
+        hamburgerBtn?.classList.remove("active");
+        mobileDrawer?.classList.remove("active");
+        drawerOverlay?.classList.remove("active");
+        document.body.style.overflow = "";
     }
 
-    // 2. Keyboard par Enter press karne par
-    if (searchInput) {
-        searchInput.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-                e.preventDefault();
-                executeHomeSearch();
-            }
-        });
-    }
-});
+    hamburgerBtn?.addEventListener("click", () => {
+        const isOpen = mobileDrawer?.classList.contains("active");
+        if (isOpen) closeMenu();
+        else openMenu();
+    });
 
+    drawerCloseBtn?.addEventListener("click", closeMenu);
+    drawerOverlay?.addEventListener("click", closeMenu);
 
-document.addEventListener('DOMContentLoaded', () => {
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileDrawer = document.getElementById('mobileDrawer');
-  const drawerOverlay = document.getElementById('drawerOverlay');
-  const drawerCloseBtn = document.getElementById('drawerCloseBtn');
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-
-  function openMenu() {
-    hamburgerBtn?.classList.add('active');
-    mobileDrawer?.classList.add('active');
-    drawerOverlay?.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Screen scroll freeze karein
-  }
-
-  function closeMenu() {
-    hamburgerBtn?.classList.remove('active');
-    mobileDrawer?.classList.remove('active');
-    drawerOverlay?.classList.remove('active');
-    document.body.style.overflow = ''; // Scroll restore karein
-  }
-
-  // Hamburger click toggle
-  hamburgerBtn?.addEventListener('click', () => {
-    const isOpen = mobileDrawer?.classList.contains('active');
-    if (isOpen) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  // Close button click
-  drawerCloseBtn?.addEventListener('click', closeMenu);
-
-  // Background overlay click
-  drawerOverlay?.addEventListener('click', closeMenu);
-
-  // Kisi bhi nav link par click hone par drawer automatically close ho
-  mobileNavLinks.forEach((link) => {
-    link.addEventListener('click', closeMenu);
-  });
+    mobileNavLinks.forEach((link) => {
+        link.addEventListener("click", closeMenu);
+    });
 });
