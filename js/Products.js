@@ -7,7 +7,26 @@ fetch('https://bookbackend-1-czz1.onrender.com/api/books')
   .catch(error => console.error("Error fetching books:", error));
 
 
-const API_BASE_URL = 'http://localhost:5000/api';
+    /* ==========================================================================
+       1. API CONFIGURATION & GLOBAL STORAGE KEYS
+       ========================================================================== */
+    // Local testing ke liye localhost:5000, live deployment ke liye apna backend URL dalein
+    const API_BASE_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+        ? "http://localhost:5000"
+        : "https://mindfullpagesbackendapi.onrender.com"; // <-- Deploy hone ke baad apna live backend URL yahan rakhein
+
+    const STORAGE_KEYS = {
+        CART: "mp_cart",
+        WISHLIST: "mp_wishlist"
+    };
+
+    // Global in-memory list for dynamic live search
+    window.homeLiveBooks = [];
+
+    /**
+     * Safely parse localStorage array
+     */
+
 
 
 
