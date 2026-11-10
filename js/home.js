@@ -714,3 +714,5 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("click", closeMenu);
     });
 });
+
+loadFeaturedProductsFromBackend();
