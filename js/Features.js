@@ -4,7 +4,7 @@ import './FeaturedProducts.css';
 // Local testing ke liye localhost, deploy ke baad apna live backend URL dalein
 const API_BASE_URL = window.location.hostname === 'localhost' 
   ? 'http://localhost:5000' 
-  : 'https://mindfull-api.onrender.com'; // Apna deployed backend URL yahan dalein
+  : 'https://bookbackend-6gn2.onrender.com'; // Apna deployed backend URL yahan dalein
 
 export function createFeaturedProducts() {
   const container = document.createElement('section');

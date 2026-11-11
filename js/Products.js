@@ -1,3 +1,41 @@
+// home.js ya Products.js me:
+async function loadBooksFromLiveServer() {
+    const container = document.getElementById('books-container'); // Apne HTML div ki exact ID dalein
+    if (!container) return;
+
+    try {
+        // Dynamic spinner loader dikhayein
+        container.innerHTML = `<p class="loading">Loading books from server...</p>`;
+
+        const response = await fetch(`${window.API_BASE_URL}/api/books`);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP Error! Status: ${response.status}`);
+        }
+
+        const resData = await response.json();
+        
+        // Render backend se aane wala data array format check karein
+        const books = Array.isArray(resData) ? resData : (resData.data || []);
+
+        if (books.length === 0) {
+            container.innerHTML = `<p>No books available right now.</p>`;
+            return;
+        }
+
+        // HTML container ko dynamic cards se populate karein
+        displayBooks(books);
+
+    } catch (error) {
+        console.error("Live Server Data Error:", error);
+        container.innerHTML = `
+            <div class="error-box">
+                <p>Products load nahi ho aaye.</p>
+                <small>Backend server spins up in 30-50s on free tiers (Render).</small>
+            </div>`;
+    }
+}
+
 fetch('https://bookbackend-1-czz1.onrender.com/api/books')
   .then(response => response.json())
   .then(data => {
@@ -12,13 +50,14 @@ fetch('https://bookbackend-1-czz1.onrender.com/api/books')
        ========================================================================== */
     // Local testing ke liye localhost:5000, live deployment ke liye apna backend URL dalein
     const API_BASE_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
-        ? "http://localhost:5000"
-        : "https://mindfullpagesbackendapi.onrender.com"; // <-- Deploy hone ke baad apna live backend URL yahan rakhein
+    ? "http://localhost:5000"
+    : "https://bookbackend-6gn2.onrender.com"; // <-- Yahan apna asli live backend URL rakhein
 
     const STORAGE_KEYS = {
         CART: "mp_cart",
         WISHLIST: "mp_wishlist"
     };
+
 
     // Global in-memory list for dynamic live search
     window.homeLiveBooks = [];
@@ -26,7 +65,13 @@ fetch('https://bookbackend-1-czz1.onrender.com/api/books')
     /**
      * Safely parse localStorage array
      */
-
+fetch(`${API_URL}/api/books`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(bookData),
+})
 
 
 

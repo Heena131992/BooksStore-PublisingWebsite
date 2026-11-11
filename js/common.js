@@ -1,3 +1,16 @@
+// common.js ya index.html ke pehle script tag me:
+window.API_BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
+    ? "http://localhost:5000"
+    : "https://bookbackend-6gn2.onrender.com";
+
+    fetch(`${API_URL}/api/books`, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(bookData),
+})
+
 // 1. Navbar Scroll Transition
 const floatingNav = document.querySelector('.floating-navbar');
 window.addEventListener('scroll', () => {

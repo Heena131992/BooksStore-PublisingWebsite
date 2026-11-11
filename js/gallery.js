@@ -12,9 +12,9 @@ fetch('https://bookbackend-1-czz1.onrender.com/api/books')
        1. API CONFIGURATION & GLOBAL STORAGE KEYS
        ========================================================================== */
     // Local testing ke liye localhost:5000, live deployment ke liye apna backend URL dalein
-    const API_BASE_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
-        ? "http://localhost:5000"
-        : "https://mindfullpagesbackendapi.onrender.com"; // <-- Deploy hone ke baad apna live backend URL yahan rakhein
+const API_BASE_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
+    ? "http://localhost:5000"
+    : "https://bookbackend-6gn2.onrender.com"; // <-- Yahan apna asli live backend URL rakhein // 
 
     const STORAGE_KEYS = {
         CART: "mp_cart",
