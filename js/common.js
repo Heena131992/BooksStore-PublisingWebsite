@@ -8,7 +8,7 @@ window.API_BASE_URL = window.location.hostname === "localhost" || window.locatio
   headers: {
     'Content-Type': 'application/json',
   },
-  body: JSON.stringify(bookData),
+  body: JSON.stringify(bookDatagi),
 })
 
 // 1. Navbar Scroll Transition
