@@ -1,9 +1,9 @@
  /* ==========================================================================
        1. API CONFIGURATION & GLOBAL STORAGE KEYS
        ========================================================================== */
-    // Local testing ke liye localhost:5000, live deployment ke liye apna backend URL dalein
+    // Local testing ke liye ${window.API_BASE_URL}/books, live deployment ke liye apna backend URL dalein
    const API_BASE_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
-    ? "http://localhost:5000"
+    ? "${window.API_BASE_URL}/books"
     : "https://bookbackend-6gn2.onrender.com"; // <-- Yahan apna asli live backend URL rakhein
     const STORAGE_KEYS = {
         CART: "mp_cart",

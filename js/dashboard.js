@@ -1,4 +1,4 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = '${window.API_BASE_URL}/books';
 
 // 1. Dashboard par saari books load karna
 async function loadInventory() {

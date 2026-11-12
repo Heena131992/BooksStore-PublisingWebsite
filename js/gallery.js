@@ -1,3 +1,5 @@
+window.API_BASE_URL = "https://bookbackend-6gn2.onrender.com/api";
+
 
 fetch('https://bookbackend-1-czz1.onrender.com/api/books')
   .then(response => response.json())
@@ -11,10 +13,10 @@ fetch('https://bookbackend-1-czz1.onrender.com/api/books')
     /* ==========================================================================
        1. API CONFIGURATION & GLOBAL STORAGE KEYS
        ========================================================================== */
-    // Local testing ke liye localhost:5000, live deployment ke liye apna backend URL dalein
+    // Local testing ke liye ${window.API_BASE_URL}/books, live deployment ke liye apna backend URL dalein
 // Local testing ke liye localhost, live ke liye apna sahi Render URL with /api
 const API_BASE_URL = (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
-    ? "http://localhost:5000/api"
+    ? "${window.API_BASE_URL}/books"
     : "https://bookbackend-6gn2.onrender.com/api";
     const STORAGE_KEYS = {
         CART: "mp_cart",
@@ -44,7 +46,7 @@ async function loadAllGalleryBooks() {
 
   try {
     // Backend se ALL books fetch hongi (No 8-book limit)
-    // const res = await fetch(`${API_BASE_URL}/https://bookbackend-6gn2.onrender.com/api`);
+    const res = await fetch(`${API_BASE_URL}/https://bookbackend-6gn2.onrender.com/api/books`);
     const result = await res.json();
 
     if (!result.success || !result.data || result.data.length === 0) {
