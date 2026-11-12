@@ -44,7 +44,7 @@ async function loadAllGalleryBooks() {
 
   try {
     // Backend se ALL books fetch hongi (No 8-book limit)
-    const res = await fetch(`${API_BASE_URL}/books`);
+    // const res = await fetch(`${API_BASE_URL}/https://bookbackend-6gn2.onrender.com/api`);
     const result = await res.json();
 
     if (!result.success || !result.data || result.data.length === 0) {
