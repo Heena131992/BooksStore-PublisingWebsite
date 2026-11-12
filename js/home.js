@@ -1,3 +1,7 @@
+ // Global API Base URL (Duplicate error se bachne ke liye window object ka use karein)
+window.API_BASE_URL = "https://bookbackend-6gn2.onrender.com/api";
+const response = await fetch(`${window.API_BASE_URL}/books`);
+ 
  /* ==========================================================================
        1. API CONFIGURATION & GLOBAL STORAGE KEYS
        ========================================================================== */

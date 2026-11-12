@@ -1,3 +1,6 @@
+// Global API Base URL (Duplicate error se bachne ke liye window object ka use karein)
+window.API_BASE_URL = "https://bookbackend-6gn2.onrender.com/api";
+const response = await fetch(`${window.API_BASE_URL}/books`);
 // home.js ya Products.js me:
 async function loadBooksFromLiveServer() {
     const container = document.getElementById('books-container'); // Apne HTML div ki exact ID dalein

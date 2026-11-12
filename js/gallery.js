@@ -1,4 +1,5 @@
 window.API_BASE_URL = "https://bookbackend-6gn2.onrender.com/api";
+const response = await fetch(`${window.API_BASE_URL}/books`);
 
 
 fetch('https://bookbackend-1-czz1.onrender.com/api/books')

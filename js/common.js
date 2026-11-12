@@ -1,15 +1,6 @@
-// common.js ya index.html ke pehle script tag me:
-window.API_BASE_URL = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1"
-    ? "${window.API_BASE_URL}/books"
-    : "https://bookbackend-6gn2.onrender.com";
-
-    fetch(`${window.API_BASE_URL}/api/books`, {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-  body: JSON.stringify(bookDatagi),
-})
+// Global API Base URL (Duplicate error se bachne ke liye window object ka use karein)
+window.API_BASE_URL = "https://bookbackend-6gn2.onrender.com/api";
+const response = await fetch(`${window.API_BASE_URL}/books`);
 
 // 1. Navbar Scroll Transition
 const floatingNav = document.querySelector('.floating-navbar');
